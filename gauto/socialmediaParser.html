@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Social Media Search</title>
+		<link rel="stylesheet" href="styles.css">
+	</head>
+	<body>		
+		<div id="container">
+			<form>
+				<fieldset>
+					<legend>Search by Business Name and Location</legend>
+					<ul class="wrapper">
+						<li>
+							<input type="text" id="server" value="http://any2wix.jelly.wixpress.com/api/platformsearch"></input>
+							<span class="icon request"></span>
+						</li>
+						<!--li>							
+							<input type="text" id="term" placeholder="Enter business name"></input>
+						</li-->						
+						<li>
+							<div class="mapContainer">								
+								<input id="pac-input" class="controls" type="text" placeholder="Enter a location">
+								<div id="type-selector" class="controls">
+								  <input type="radio" name="type" id="changetype-all" checked="checked">
+								  <label class="shortLabel" for="changetype-all">All</label>
+								  <input type="radio" name="type" id="changetype-establishment">
+								  <label class="shortLabel" for="changetype-establishment">Establishments</label>
+								  <input type="radio" name="type" id="changetype-address">
+								  <label class="shortLabel" for="changetype-address">Addresses</label>
+								  <input type="radio" name="type" id="changetype-geocode">
+								  <label class="shortLabel" for="changetype-geocode">Geocodes</label>
+								</div>
+								<div id="map"></div>
+							</div>							
+						</li>					
+					</ul>	
+					<div class="wrapper" id="dataDisplay">
+						<pre id="requestData"></pre>
+						<span class="loading"></span>
+					</div>
+					
+					<ul class="wrapper" id="mediaBox">
+						<li><label><input type="checkbox" name="yelp" value="true" checked>Yelp</input></label></li>
+						<li><label><input type="checkbox" name="facebook" value="true" checked>Facebook</input></label></li>
+						<li><label><input type="checkbox" name="google_places" value="true" checked>Google Places</input></label></li>
+						<li><label><input type="checkbox" name="googleplus" value="true" checked>Google Plus</input></label></li>
+						<li><label><input type="checkbox" name="factual" value="true" checked>Factual</input></label></li>						
+						<li><label><input type="checkbox" name="youtube" value="true" checked>Youtube</input></label></li>
+						<li><label><input type="checkbox" name="twitter" value="true" checked>Twitter</input></label></li>
+						<li><label><input type="checkbox" name="flickr" value="true" checked>Flickr</input></label></li>
+					</ul>									
+					<input id="search" type="submit" value="Search"></input>
+				</fieldset>							
+				<fieldset id="results">
+					<legend>Results</legend>
+					<ul class="navigation"></ul>
+					<div id="content"></div>									
+				</fieldset>
+			</form>	
+			<div id="platformResults">
+				<span class="icon close"></span>
+				<div class="box"></div>
+			</div>			
+		</div>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWeeateTaYGqsHhNcmoDfT7Us-vLDZVPs&libraries=places"></script>
+		<!-- script type="text/javascript" src="http://static.wix.com/services/third-party/lodash/2.4.1/dist/lodash.min"></script -->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+		<script type="text/javascript" src="script.js"></script>
+	</body>
+</html>
