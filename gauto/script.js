@@ -244,7 +244,7 @@ initRadiusMap = function(data) {
 	document.getElementById('submit').addEventListener('click', function() {
 		geocodeAddress(geocoder, map, data);
 	});
-}
+};
 
 geocodeAddress = function(geocoder, resultsMap, data) {
 	var address = document.getElementById('address').value;
@@ -269,7 +269,7 @@ geocodeAddress = function(geocoder, resultsMap, data) {
 			alert('Geocode was not successful for the following reason: ' + status);
 		}
 	});
-}
+};
 
 unifiedPlatforms = function(mergedResults) {
 	var platforms = '';
@@ -318,7 +318,7 @@ parseResults = function(results) {
 			output += '<dl>';			
 			output += '<dt>';
 			output += '<img src="' + (j.image ? j.image : defaultImage) + '" />';
-			output += j.text + ' <div class="platforms">' + unifiedPlatforms(j.merged_results) + '</div>';			
+			output += j.text + ', similarity rank: ' + j.name_similarity_rank + ' <div class="platforms">' + unifiedPlatforms(j.merged_results) + '</div>';
 			//output += '<span class="icon search"></span>';
 			output += '<div class="modal">' + organizeMergedResults(j.merged_results) + '</div>';
 			output += '<div class="platformUrls">' + j.urls + '</div>';
@@ -327,7 +327,7 @@ parseResults = function(results) {
 			j.category ? output += '<dd>' + j.category + '</dd>' : output += '';							
 			j.website ? output += '<dd class="icon website">' + '<a target="_blank" href="' + j.website + '">' + j.website + '</a></dd>' : output += '';
 			j.phone ? output += '<dd class="icon phone">' + j.phone + '</dd>' : output += '';
-			j.address ? output += '<dd class="icon location">' + j.address.full_addr + '</dd>' : output += '';							
+			j.address ? output += '<dd class="icon location">' + j.address.full_addr + ', distance: ' + j.distance + '(m)</dd>' : output += '';
 			output += '</dl>';	
 		});
 			
