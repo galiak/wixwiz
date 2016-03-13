@@ -3,22 +3,21 @@ $(document).ready(function(){
 	var data = {
 		'platforms': [''],
 		'searchParams': {
-			'name': 'pizza',							
+			'name': '',
 			'category': '',
 			'address':{
 				'geometry' : {
 					'location':{
-						'lat': 37.7749295,
-						'lng': -122.41941550000001
+						'lat': -33.8688,
+						'lng': 151.2195
 					},
-					'radius': 5000
+					'radius': 0
 				}
 			}
 		}
-	}
+	};
 	
 	initForm(data);
-	initiMap(data);
 	displayRequestData(data);
 	
 	$('#search').on('click', function() {	
@@ -26,9 +25,11 @@ $(document).ready(function(){
 		$('.navigation').empty();					
 		$('#content').empty();					
 		getPlatforms(data);					
-		//getName(data);				
-		//getRadius(data);
-		displayRequestData(data);		
+		if($('input[name=search]:checked').val() === 'glocation') {
+			getName(data);
+			getRadius(data);
+		}
+		displayRequestData(data);
 		$('.loading').show();
 		
 		$.ajax({
@@ -57,7 +58,7 @@ searchByUrls = function(urls) {
 		dataType: 'json',
 		success: function(data){parsePlatformData(data)}
 	});	
-}
+};
 
 parseGeneralInfo = function(generalInfo) {
 	var content = '<ul>';
@@ -67,7 +68,7 @@ parseGeneralInfo = function(generalInfo) {
 	content += '<ul>';
 	
 	return content;
-}
+};
 
 parseContactDetails = function(contactDetails) {
 	var content = '<ul>';
@@ -79,7 +80,7 @@ parseContactDetails = function(contactDetails) {
 	content += '<ul>';
 	
 	return content;
-}
+};
 
 parsePlatformData = function(answer) {		
 	var content = '';
@@ -95,26 +96,59 @@ parsePlatformData = function(answer) {
 	$('#platformResults .box').html(content);	
 	$('#platformResults').show();
 		
-}
+};
 
 
 initForm = function(data) {
-	$('#term').val('pizza');				
-	$('#latitude').val(data.searchParams.address.geometry.location.lat);
-	$('#longitude').val(data.searchParams.address.geometry.location.lng);
-}
+	$('input[name=search]:checked').val() === 'gauto' ? initAutoMap(data) : initRadiusMap(data);
+
+	$('#searchOptions input').on('change', function() {
+		var value = $('input[name=search]:checked').val(),
+			legend= $('#searchFields legend');
+
+		if (value === 'gauto') {
+			legend.html('Search by Business Name and Location (Google autocomplete)');
+			$('#floating-panel').hide();
+			$('#pac-input').show();
+			$('#type-selector').show();
+			initAutoMap(data);
+		}
+		if (value === 'glocation') {
+			legend.html('Search by Business Name, Location and Radius');
+			$('#pac-input').hide();
+			$('#type-selector').hide();
+			$('#floating-panel').show();
+			initRadiusMap(data)
+		}
+	});
+};
 
 displayRequestData = function(data) {
 	$('#requestData').html(JSON.stringify(data, undefined, 2));
-}
+};
 
-initiMap = function(data) {	
+initAutoMap = function(data) {
 	var map = new google.maps.Map(document.getElementById('map'), {
 	  center: {lat: -33.8688, lng: 151.2195},
 	  zoom: 13
 	});
-	var input = /** @type {!HTMLInputElement} */(
-		document.getElementById('pac-input'));
+
+	if(!document.getElementById('pac-input')) {
+		var text = '<input id="pac-input" class="controls" type="text" placeholder="Enter location">';
+		text += '<div id="type-selector" class="controls">';
+		text +=	'<input type="radio" name="type" id="changetype-all" checked="checked">';
+		text +=	'<label class="shortLabel" for="changetype-all">All</label>';
+		text +=	'<input type="radio" name="type" id="changetype-establishment">';
+		text +=	'<label class="shortLabel" for="changetype-establishment">Establishments</label>';
+		text +=	'<input type="radio" name="type" id="changetype-address">';
+		text +=	'<label class="shortLabel" for="changetype-address">Addresses</label>';
+		text +=	'<input type="radio" name="type" id="changetype-geocode">';
+		text +=	'<label class="shortLabel" for="changetype-geocode">Geocodes</label>';
+		text +=	'</div>	';
+		$(text).appendTo($('.mapContainer'));
+	}
+
+	var input = document.getElementById('pac-input');
 
 	var types = document.getElementById('type-selector');
 	map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
@@ -179,31 +213,37 @@ initiMap = function(data) {
 	setupClickListener('changetype-address', ['address']);
 	setupClickListener('changetype-establishment', ['establishment']);
 	setupClickListener('changetype-geocode', ['geocode']);
-}
+};
 
-/**initiMap = function(data) {			
+initRadiusMap = function(data) {
 	var map = new google.maps.Map(document.getElementById('map'), {
 		zoom: 10,
-		center: {lat: data.searchParams.address.geometry.location.lat, lng: data.searchParams.address.geometry.location.lng},
+		center: {
+			lat: data.searchParams.address.geometry.location.lat ? data.searchParams.address.geometry.location.lat : data.searchParams.address.geometry.location.lat(),
+			lng: data.searchParams.address.geometry.location.lng ? data.searchParams.address.geometry.location.lng : data.searchParams.address.geometry.location.lng()
+		},
 		zoomControl: true
 	});
 	var marker = new google.maps.Marker({
-		position: {lat: data.searchParams.address.geometry.location.lat, lng: data.searchParams.address.geometry.location.lng},
-		map: map					
+		position: {
+			lat: data.searchParams.address.geometry.location.lat ? data.searchParams.address.geometry.location.lat : data.searchParams.address.geometry.location.lat(),
+			lng: data.searchParams.address.geometry.location.lng ? data.searchParams.address.geometry.location.lng : data.searchParams.address.geometry.location.lng()
+		},
+		map: map
 	});
 	var circle = new google.maps.Circle({
 		map: map,
-		radius: data.searchParams.address.geometry.radius, 
+		radius: data.searchParams.address.geometry.radius,
 		fillColor: '#2E86C1',
 		strokeColor: '#2E86C1',
 		strokeWeight: 1
 	});
 	circle.bindTo('center', marker, 'position');
-	
+
 	var geocoder = new google.maps.Geocoder();
 	document.getElementById('submit').addEventListener('click', function() {
 		geocodeAddress(geocoder, map, data);
-	});      
+	});
 }
 
 geocodeAddress = function(geocoder, resultsMap, data) {
@@ -219,7 +259,7 @@ geocodeAddress = function(geocoder, resultsMap, data) {
 			});
 			var circle = new google.maps.Circle({
 				map: resultsMap,
-				radius: data.searchParams.address.geometry.radius, 
+				radius: data.searchParams.address.geometry.radius,
 				fillColor: '#2E86C1',
 				strokeColor: '#2E86C1',
 				strokeWeight: 1
@@ -229,9 +269,9 @@ geocodeAddress = function(geocoder, resultsMap, data) {
 			alert('Geocode was not successful for the following reason: ' + status);
 		}
 	});
-}**/
+}
 
-unifiedPlatforms = function(mergedResults) {				
+unifiedPlatforms = function(mergedResults) {
 	var platforms = '';
 	
 	_(mergedResults).forEach(function(n) { 
@@ -239,7 +279,7 @@ unifiedPlatforms = function(mergedResults) {
 	});			
 	
 	return platforms;
-}
+};
 
 organizeMergedResults = function(mergedResults) {
 	var content = '';
@@ -258,7 +298,7 @@ organizeMergedResults = function(mergedResults) {
 	});
 	
 	return content;
-}	
+};
 
 parseResults = function(results) {		
 	if (_.size(results) === 2) {
@@ -449,7 +489,7 @@ parseResults = function(results) {
 	});
 	
 	$('#results').show();	
-}
+};
 
 navigateResults = function(element) {
 	$('.navigation li').removeClass('selected');
@@ -457,7 +497,7 @@ navigateResults = function(element) {
 	
 	$('#content div').hide();
 	$('#' + $(element).attr('id') + 'Result').show();		
-}
+};
 
 getPlatforms = function(data) {				
 	var platformsArray = [];
@@ -465,27 +505,27 @@ getPlatforms = function(data) {
 		this.checked ? platformsArray.push(this.name) : '';
 	});				
 	data.platforms = platformsArray;
-}
+};
 
 getServer = function() {
 	return $('#server').val();
-}
+};
 
 getName = function(data) {				
 	data.searchParams.name = $('#term').val();
-}
+};
 
 getLatitude = function(data) {			
 	return data.searchParams.address.geometry.location.lat;
-}
+};
 
 getLongitude = function(data) {
 	return data.searchParams.address.geometry.location.lng;
-}
+};
 
 getRadius = function(data) {
 	return data.searchParams.address.geometry.radius = Number($('#radius').val());
-}
+};
 		
 formatAddress = function(addressObj) {
 	var address = '';
@@ -493,13 +533,8 @@ formatAddress = function(addressObj) {
 		adress += addressObj.street + ' ' + addressObj.city + ' ' + addressObj.state + ' ' + addressObj.country + ' ' + addressObj.zipcode;					
 	});
 	return address;				
-}						
-
+};
 
 $('.request').on('click',function() {			
 	$('#dataDisplay').toggle();	
 });
-	
-$('input[type=radio][name=type]').on('change', function() {				
-	this.value == 'address' ? ($('#coordinatesBox').hide(), $('#addressBox').show()) : ($('#addressBox').hide(), $('#coordinatesBox').show());		
-});			

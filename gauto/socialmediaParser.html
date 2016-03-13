@@ -7,33 +7,44 @@
 	<body>		
 		<div id="container">
 			<form>
-				<fieldset>
+				<ul id="searchOptions">
+					<li><label><input type="radio" name="search" for="gauto" id="gauto" value="gauto" checked>Search by Business Name and Location (Google autocomplete)</input></label></li>
+					<li><label><input type="radio" name="search" for="glocation" id="glocation" value="glocation">Search by Business Name, Location and Radius</input></label></li>
+				</ul>
+				<fieldset id="searchFields">
 					<legend>Search by Business Name and Location</legend>
 					<ul class="wrapper">
 						<li>
-							<input type="text" id="server" value="http://any2wix.jelly.wixpress.com/api/platformsearch"></input>
+							<input type="text" id="server" value="http://wizard.jelly.wixpress.com/api/platformsearch"/>
 							<span class="icon request"></span>
 						</li>
-						<!--li>							
-							<input type="text" id="term" placeholder="Enter business name"></input>
-						</li-->						
 						<li>
-							<div class="mapContainer">								
-								<input id="pac-input" class="controls" type="text" placeholder="Enter a location">
-								<div id="type-selector" class="controls">
-								  <input type="radio" name="type" id="changetype-all" checked="checked">
-								  <label class="shortLabel" for="changetype-all">All</label>
-								  <input type="radio" name="type" id="changetype-establishment">
-								  <label class="shortLabel" for="changetype-establishment">Establishments</label>
-								  <input type="radio" name="type" id="changetype-address">
-								  <label class="shortLabel" for="changetype-address">Addresses</label>
-								  <input type="radio" name="type" id="changetype-geocode">
-								  <label class="shortLabel" for="changetype-geocode">Geocodes</label>
+							<div class="mapContainer">
+								<!-------------------------->
+								<div id="floating-panel">
+									<input type="text" id="term" placeholder="Enter business name" />
+									<input id="address" type="textbox" placeholder="Enter location" value="" />
+									<input type="text" class="shortInput" id="radius" placeholder="Enter Radius (m)" value="" />
+									<input id="submit" type="button" value="Geocode" />
 								</div>
+								<!-------------------------->
+								<input id="pac-input" class="controls" type="text" placeholder="Enter location">
+								<div id="type-selector" class="controls">
+									<input type="radio" name="type" id="changetype-all" checked="checked">
+									<label class="shortLabel" for="changetype-all">All</label>
+									<input type="radio" name="type" id="changetype-establishment">
+									<label class="shortLabel" for="changetype-establishment">Establishments</label>
+									<input type="radio" name="type" id="changetype-address">
+									<label class="shortLabel" for="changetype-address">Addresses</label>
+									<input type="radio" name="type" id="changetype-geocode">
+									<label class="shortLabel" for="changetype-geocode">Geocodes</label>
+								</div>
+								<!-------------------------->
 								<div id="map"></div>
-							</div>							
-						</li>					
-					</ul>	
+							</div>
+						</li>
+
+					</ul>
 					<div class="wrapper" id="dataDisplay">
 						<pre id="requestData"></pre>
 						<span class="loading"></span>
@@ -49,7 +60,7 @@
 						<li><label><input type="checkbox" name="twitter" value="true" checked>Twitter</input></label></li>
 						<li><label><input type="checkbox" name="flickr" value="true" checked>Flickr</input></label></li>
 					</ul>									
-					<input id="search" type="submit" value="Search"></input>
+					<input id="search" type="submit" value="Search" />
 				</fieldset>							
 				<fieldset id="results">
 					<legend>Results</legend>

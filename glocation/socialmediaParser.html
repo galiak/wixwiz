@@ -8,29 +8,25 @@
 		<div id="container">
 			<form>
 				<fieldset>
-					<legend>Search</legend>
+					<legend>Search by Business Name, Location and Radius</legend>
 					<ul class="wrapper">
 						<li>
-							<label>Server:</label>
-							<input type="text" id="server" value="http://any2wix.jelly.wixpress.com/api/platformsearch"></input>
+							<input type="text" id="server" value="http://any2wix.jelly.wixpress.com/api/platformsearch" />
+							<span class="icon request"></span>
 						</li>
 						<li>
-							<label>by Name:</label>
-							<input type="text" id="term"></input>
+							<label>Business Name:</label>
+							<input type="text" id="term" placeholder="Enter business name" />
 						</li>
 						<li>
-							<label>by Category:</label>
-							<input type="text" id="category"></input>	
-						</li>
-						<li>
-							<label>by Location:</label>							
+							<label>Location:</label>
 							<div class="mapContainer">
 								<div id="floating-panel">
 									<label class="shortLabel">Location:</label>
-									<input id="address" type="textbox" value="San Francisco">
+									<input id="address" type="textbox" value="San Francisco" />
 									<label class="shortLabel">Radius (m):</label>
-									<input type="text" class="shortInput" id="radius" value="5000">
-									<input id="submit" type="button" value="Geocode">
+									<input type="text" class="shortInput" id="radius" value="5000" />
+									<input id="submit" type="button" value="Geocode" />
 								</div>
 								<div id="map"></div>
 							</div>
@@ -51,7 +47,7 @@
 						<li><label><input type="checkbox" name="twitter" value="true" checked>Twitter</input></label></li>
 						<li><label><input type="checkbox" name="flickr" value="true" checked>Flickr</input></label></li>
 					</ul>									
-					<input id="search" type="submit" value="Search"></input>
+					<input id="search" type="submit" value="Search" />
 				</fieldset>							
 				<fieldset id="results">
 					<legend>Results</legend>

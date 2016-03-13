@@ -28,9 +28,7 @@ dt {
 	cursor: pointer;
 }
 label {
-	/*width: 120px;
-	float: left;*/
-	padding: 1px 0px;
+	padding: 1px 0;
 }
 input {
 	border: 1px solid #9AB0AA;
@@ -39,21 +37,18 @@ input[type="text"] {
 	width: 316px;
     margin: 6px;
 	line-height: 17px;
-	
-}
-label.shortLabel {
-	/*width: 80px;*/
 }
 input[type="text"].shortInput {
 	width: 100px;
 }
-
 pre {
 	font-family: 'Courier';	
     padding: 10px;
     margin: 4px 0;		
 }
-
+legend {
+	font-weight: bold;
+}
 #search {
 	float: left;
 	clear: both;
@@ -67,7 +62,6 @@ pre {
 	background-repeat: no-repeat;
 	padding: 2px 26px;
 }
-
 span.icon {
 	padding: 0;
 	margin: 6px;
@@ -76,7 +70,6 @@ span.icon {
 	height: 22px;
 	float: left;
 }
-
 .phone {
 	background-image: url(https://cdn1.iconfinder.com/data/icons/MetroStation-PNG/128/MB__phone.png);				
 	
@@ -123,7 +116,13 @@ span.icon {
 .search {
 	background-image: url(https://cdn1.iconfinder.com/data/icons/education-set-01/512/search-text-512.png);
 }
-
+.close {
+	background-image: url(http://www.iconsdb.com/icons/preview/green/close-window-xxl.png);
+}
+.request {
+	background-image: url(https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-help-circled-128.png);
+	cursor: pointer;
+}
 .box {
 	float: left;
 	clear: both;
@@ -147,7 +146,6 @@ span.icon {
 #dataDisplay pre {
 	min-height: 470px;		
 }
-
 .wrapper > li {
 	float: left;
 }			
@@ -158,16 +156,11 @@ span.icon {
 .mapContainer {
 	float: left;				
 }
-#floating-panel {				
-	top: 10px;
-	left: 25%;
-	z-index: 5;
-	background-color: #fff;
-	padding: 5px;
+#floating-panel {
 	border: 1px solid #999;
-	text-align: center;				
-	line-height: 30px;
-	padding-left: 10px;
+	background-color: #fff;
+	margin-bottom: 6px;
+	display: none;
 }
 #floating-panel label {				
 	/*clear: left;*/
@@ -211,8 +204,7 @@ span.icon {
 	background-size: 35px 35px;
 	background-repeat: no-repeat;
 	padding: 2px 10px 2px 44px;
-}			
-
+}
 #content {
 	float: left;
 	width: calc(100% - 14px);
@@ -290,17 +282,12 @@ span.icon {
 	background-color: rgba(0, 255, 0, 0.3);
 	display: none;
 }
-.close {
-	background-image: url(http://www.iconsdb.com/icons/preview/green/close-window-xxl.png);
-}
-.request {
-	background-image: url(https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-help-circled-128.png);
-	cursor: pointer;
-}
-
 #platformResults .box {
 	background-color: #fff;
 	margin: 0;
 	padding: 10px;
 	width: 90%;
+}
+#searchOptions {
+	margin: 20px -3px;
 }
