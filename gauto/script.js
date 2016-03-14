@@ -219,15 +219,15 @@ initRadiusMap = function(data) {
 	var map = new google.maps.Map(document.getElementById('map'), {
 		zoom: 10,
 		center: {
-			lat: data.searchParams.address.geometry.location.lat ? data.searchParams.address.geometry.location.lat : data.searchParams.address.geometry.location.lat(),
-			lng: data.searchParams.address.geometry.location.lng ? data.searchParams.address.geometry.location.lng : data.searchParams.address.geometry.location.lng()
+			lat: typeof(data.searchParams.address.geometry.location.lat) === 'function' ? data.searchParams.address.geometry.location.lat() : data.searchParams.address.geometry.location.lat,
+			lng: typeof(data.searchParams.address.geometry.location.lng) === 'function' ? data.searchParams.address.geometry.location.lng() : data.searchParams.address.geometry.location.lng
 		},
 		zoomControl: true
 	});
 	var marker = new google.maps.Marker({
 		position: {
-			lat: data.searchParams.address.geometry.location.lat ? data.searchParams.address.geometry.location.lat : data.searchParams.address.geometry.location.lat(),
-			lng: data.searchParams.address.geometry.location.lng ? data.searchParams.address.geometry.location.lng : data.searchParams.address.geometry.location.lng()
+			lat: typeof(data.searchParams.address.geometry.location.lat) === 'function' ? data.searchParams.address.geometry.location.lat() : data.searchParams.address.geometry.location.lat,
+			lng: typeof(data.searchParams.address.geometry.location.lng) === 'function' ? data.searchParams.address.geometry.location.lng() : data.searchParams.address.geometry.location.lng
 		},
 		map: map
 	});
@@ -275,7 +275,7 @@ unifiedPlatforms = function(mergedResults) {
 	var platforms = '';
 	
 	_(mergedResults).forEach(function(n) { 
-		platforms += '<span class="icon ' + n.platform_name + '"></span>';					
+		platforms += '<li><span class="icon ' + n.platform_name + '"></span></li>';
 	});			
 	
 	return platforms;
@@ -283,20 +283,22 @@ unifiedPlatforms = function(mergedResults) {
 
 organizeMergedResults = function(mergedResults) {
 	var content = '';
-	
-	_.forEach(mergedResults, function(i) { 									
-		content += '<ul class="details">';
-		content += '<li>Platform: ' + i.platform_name + '</li>';
-		content += '<li>Text: ' + i.text + '</li>';
-		content += '<li>Category: ' + i.category + '</li>';
-		i.address ? content += '<li>Address: ' + i.address.full_addr + '</li>' : '';
-		content += '<li>Phone: ' + i.phone + '</li>';
-		content += '<li>Url: <a target="_blank" href="' + i.url + '">' + i.url + '</a></li>';
-		i.website ? content += '<li>Website: <a target="_blank" href="' + i.website + '">' + i.website + '</a></li>' : '';
-		i.image ? content += '<li><img src="' + i.image + '" /></li>' : '';
-		content += '</ul>';		
+	content += '<table>';
+	content += '<tr><th>Platform</th><th>Name</th><th>Category</th><th>Address</th><th>Phone</th><th>Url</th><th>Website</th><th>Image</th></tr>';
+	_.forEach(mergedResults, function(i) {
+
+		content += '<tr>';
+		content +=	'<th>' + i.platform_name + '</th>';
+		content += '<td>' + i.text + '</td>';
+		content += '<td>' + i.category + '</td>';
+		content += i.address ? '<td>' + i.address.full_addr + '</td>': '<td>--/--</td>';
+		content += '<td>' + i.phone + '</td>';
+		content += '<td>' + '<a target="_blank" href="' + i.url + '">' + i.url + '</a>' + '</td>';
+		content += i.website ? '<td>' + '<a target="_blank" href="' + i.website + '">' + i.website + '</a>' + '</td>' : '<td>--/--</td>';
+		content += '<td>' + '<img src="' + i.image + '" />' + '</td>';
+		content +=	'</tr>';
 	});
-	
+	content += '</table>';
 	return content;
 };
 
@@ -318,7 +320,7 @@ parseResults = function(results) {
 			output += '<dl>';			
 			output += '<dt>';
 			output += '<img src="' + (j.image ? j.image : defaultImage) + '" />';
-			output += j.text + ', similarity rank: ' + j.name_similarity_rank + ' <div class="platforms">' + unifiedPlatforms(j.merged_results) + '</div>';
+			output += j.text + '; Similarity rank: ' + j.name_similarity_rank + '; Distance: ' + parseInt(j.distance) + 'm' + '<ul class="platforms">' + unifiedPlatforms(j.merged_results) + '</ul>';
 			//output += '<span class="icon search"></span>';
 			output += '<div class="modal">' + organizeMergedResults(j.merged_results) + '</div>';
 			output += '<div class="platformUrls">' + j.urls + '</div>';
@@ -327,10 +329,10 @@ parseResults = function(results) {
 			j.category ? output += '<dd>' + j.category + '</dd>' : output += '';							
 			j.website ? output += '<dd class="icon website">' + '<a target="_blank" href="' + j.website + '">' + j.website + '</a></dd>' : output += '';
 			j.phone ? output += '<dd class="icon phone">' + j.phone + '</dd>' : output += '';
-			j.address ? output += '<dd class="icon location">' + j.address.full_addr + ', distance: ' + j.distance + '(m)</dd>' : output += '';
+			j.address ? output += '<dd class="icon location">' + j.address.full_addr + '</dd>' : output += '';
 			output += '</dl>';	
 		});
-			
+
 		output += '</div>';		
 	}	
 	
@@ -480,15 +482,12 @@ parseResults = function(results) {
 		navigateResults(this);
 	});
 
-	$('#unifiedResult .platforms').on('mouseover',function() {			
-		$(this).siblings('.modal').show();	
+	$('#unifiedResult .platforms').on('click',function() {
+		$(this).siblings('.modal').toggle();
 	});
-	
-	$('#unifiedResult .platforms').on('mouseout',function() {	
-		$(this).siblings('.modal').hide();	
-	});
-	
-	$('#results').show();	
+
+	$('#unifiedResult').show();
+	$('#results').show();
 };
 
 navigateResults = function(element) {

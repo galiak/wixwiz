@@ -49,6 +49,14 @@ pre {
 legend {
 	font-weight: bold;
 }
+table {
+	border-collapse: collapse;
+}
+table, th, td {
+	border: 1px solid #000;
+	word-break: break-word;
+	text-align: center;
+}
 #search {
 	float: left;
 	clear: both;
@@ -213,6 +221,9 @@ span.icon {
 	padding: 20px 7px;
 	border-radius: 4px;
 }
+#content > div {
+	display: none;
+}
 #content img {
 	float: left;
 	margin: 0 10px 10px 0;
@@ -269,6 +280,9 @@ span.icon {
 }
 .platforms {
 	float: left;
+}
+.platforms li {
+	display: inline;
 }
 .platformUrls {
 	display: none;
