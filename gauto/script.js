@@ -60,11 +60,39 @@ searchByUrls = function(urls) {
 	});
 };
 
+parseUnifiedGeneralInfo = function(generalInfo) {
+	var content = '<ul>';
+	content += '<li>Site Title [' + generalInfo.site_title.source + ']: ' + generalInfo.site_title.value + '</li>';
+	content += '<li>Category [' + generalInfo.category.source + ']: ' + generalInfo.category.value + '</li>';
+	content += '<li>Sub-Category [' + generalInfo.sub_category.source + ']: ' + generalInfo.sub_category.value + '</li>';
+	content += '<li>Short Description [' + generalInfo.short_description.source + ']: ' + generalInfo.short_description.value + '</li>';
+	content += '<li>Long Description [' + generalInfo.long_description.source + ']: ' + generalInfo.long_description.value + '</li>';
+	generalInfo.logo ? content += '<li>Logo [' + generalInfo.logo.source + ']: <img src="' + generalInfo.logo.value + '"/>' + '</li>' : '';
+	content += '<ul>';
+
+	return content;
+};
+
 parseGeneralInfo = function(generalInfo) {
 	var content = '<ul>';
-	content += '<li>General Info</li>';
-	content += '<li>Category: ' + generalInfo.category.value + '</li>';
-	generalInfo.logo ? content += '<li>Logo: <img src="' + generalInfo.logo.value + '"/>' + '</li>' : '';
+	content += '<li>Site Title: ' + generalInfo.site_title + '</li>';
+	content += '<li>Category: ' + generalInfo.category + '</li>';
+	content += '<li>Sub-Category: ' + generalInfo.sub_category + '</li>';
+	content += '<li>Short Description: ' + generalInfo.short_description + '</li>';
+	content += '<li>Long Description: ' + generalInfo.long_description + '</li>';
+	generalInfo.logo ? content += '<li>Logo: <img src="' + generalInfo.logo + '"/>' + '</li>' : '';
+	content += '<ul>';
+
+	return content;
+};
+
+parseUnifiedContactDetails = function(contactDetails) {
+	var content = '<ul>';
+	content += '<li>Address: ' + contactDetails.address.full_addr + '</li>';
+	content += '<li>Phone [' + contactDetails.phone.source + ']: ' + contactDetails.phone.value + '</li>';
+	content += '<li>Email ['+ contactDetails.email.source + ']: ' + contactDetails.email.value + '</li>';
+	contactDetails.website ? content += '<li>Website [' + contactDetails.website.source + ']: ' + contactDetails.website.value + '</li>' : '';
+	content += '<li>Open hours [' +contactDetails.open_hours.source + ']: ' + contactDetails.open_hours.value + '</li>';
 	content += '<ul>';
 
 	return content;
@@ -72,10 +100,10 @@ parseGeneralInfo = function(generalInfo) {
 
 parseContactDetails = function(contactDetails) {
 	var content = '<ul>';
-	content += '<li>Contact Details</li>';
-	content += '<li>Address: ' + contactDetails.address.full_addr + '</li>';
-	content += '<li>Phone: ' + contactDetails.phone.value + '</li>';
-	contactDetails.website ? content += '<li>Website: ' + contactDetails.website.value + '</li>' : '';
+	contactDetails.address ? content += '<li>Address: ' + contactDetails.address.full_addr + '</li>' : '';
+	content += '<li>Phone: ' + contactDetails.phone + '</li>';
+	content += '<li>Email: ' + contactDetails.email + '</li>';
+	contactDetails.website ? content += '<li>Website: ' + contactDetails.website + '</li>' : '';
 	content += '<li>Open hours: ' + contactDetails.open_hours + '</li>';
 	content += '<ul>';
 
@@ -86,16 +114,20 @@ parsePlatformData = function(answer) {
 	var content = '';
 
 	_.forEach(answer.platforms, function(i) {
-		content += '<table>';
-		content += '<caption>' + i.platform_name + '</caption>';
-		content += '<tr><th>General Info</th>';
-		content += '<td>' + i.general_info + '</td></tr>';
-		content += '<tr><th>Contact Details</th>';
-		content += '<td>' + i.contact_details + '</td></tr>';
-
-
-		//content += '<td>' + parseGeneralInfo(i.general_info) + '</td></tr>';
-		//content += '<li>' + parseContactDetails(i.contact_details) + '</li>';
+		content += '<table class="details">';
+		if(i.platform_name === 'unified_fields') {
+			content += '<caption>' + i.platform_name + '</caption>';
+			content += '<tr><th>General Info</th>';
+			content += '<td>' + parseUnifiedGeneralInfo(i.general_info) + '</td></tr>';
+			content += '<tr><th>Contact Details</th>';
+			content += '<td>' + parseUnifiedContactDetails(i.contact_details) + '</td></tr>';
+		} else {
+			content += '<caption>' + i.platform_name + '</caption>';
+			content += '<tr><th>General Info</th>';
+			content += '<td>' + parseGeneralInfo(i.general_info) + '</td></tr>';
+			content += '<tr><th>Contact Details</th>';
+			content += '<td>' + parseContactDetails(i.contact_details) + '</td></tr>';
+		}
 
 		content += '<table>';
 	});
