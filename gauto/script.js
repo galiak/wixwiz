@@ -485,6 +485,7 @@ parseResults = function(results) {
 
 	$('.navigation li:first-child').addClass('selected');
 
+
 	$('.navigation li').on('click', function() {
 		navigateResults(this);
 	});
@@ -495,6 +496,7 @@ parseResults = function(results) {
 
 	$('#unifiedResult').show();
 	$('#results').show();
+	$('#content div:first-child').show();
 };
 
 navigateResults = function(element) {
@@ -507,9 +509,11 @@ navigateResults = function(element) {
 
 getPlatforms = function(data) {
 	var platformsArray = [];
-	$('#mediaBox input[type=checkbox]').each(function () {
-		this.checked ? platformsArray.push(this.name) : '';
-	});
+	if($('#mediaBox input[name=all]:checked').val() !== 'all') {
+		$('#mediaBox input[type=checkbox]').each(function () {
+			this.checked ? platformsArray.push($(this).val()) : '';
+		});
+	}
 	data.platforms = platformsArray;
 };
 
