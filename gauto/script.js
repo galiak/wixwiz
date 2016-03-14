@@ -1,4 +1,4 @@
-$(document).ready(function(){			
+$(document).ready(function(){
 	var results = null;
 	var data = {
 		'platforms': [''],
@@ -16,22 +16,22 @@ $(document).ready(function(){
 			}
 		}
 	};
-	
+
 	initForm(data);
 	displayRequestData(data);
-	
-	$('#search').on('click', function() {	
-		event.preventDefault();			
-		$('.navigation').empty();					
-		$('#content').empty();					
-		getPlatforms(data);					
+
+	$('#search').on('click', function() {
+		event.preventDefault();
+		$('.navigation').empty();
+		$('#content').empty();
+		getPlatforms(data);
 		if($('input[name=search]:checked').val() === 'glocation') {
 			getName(data);
 			getRadius(data);
 		}
 		displayRequestData(data);
 		$('.loading').show();
-		
+
 		$.ajax({
 			type: 'POST',
 			url: getServer(),
@@ -39,63 +39,70 @@ $(document).ready(function(){
 			contentType: 'application/json; charset=utf-8',
 			dataType: 'json',
 			success: function(data){parseResults(data); $('.loading').hide();}
-		});				
+		});
 	});
-});		
+});
 
-searchByUrls = function(urls) {	
-	event.preventDefault();	
-	
+searchByUrls = function(urls) {
+	event.preventDefault();
+
 	var data = {
 		'urls': urls,
 		'requestOrigin': 'onboarding'
-	};	
+	};
 	$.ajax({
 		type: 'POST',
-		url: 'http://any2wix.jelly.wixpress.com/api/analyzeplatforms',
+		url: 'http://wizard.jelly.wixpress.com/api/analyzeplatforms',
 		data: JSON.stringify(data),
 		contentType: 'application/json; charset=utf-8',
 		dataType: 'json',
 		success: function(data){parsePlatformData(data)}
-	});	
+	});
 };
 
 parseGeneralInfo = function(generalInfo) {
 	var content = '<ul>';
 	content += '<li>General Info</li>';
-	content += '<li>Category: ' + generalInfo.category.value + '</li>';	
-	generalInfo.logo ? content += '<li>Logo: <img src="' + generalInfo.logo.value + '"/>' + '</li>' : '';	
+	content += '<li>Category: ' + generalInfo.category.value + '</li>';
+	generalInfo.logo ? content += '<li>Logo: <img src="' + generalInfo.logo.value + '"/>' + '</li>' : '';
 	content += '<ul>';
-	
+
 	return content;
 };
 
 parseContactDetails = function(contactDetails) {
 	var content = '<ul>';
 	content += '<li>Contact Details</li>';
-	content += '<li>Address: ' + contactDetails.address.full_addr + '</li>';	
-	content += '<li>Phone: ' + contactDetails.phone.value + '</li>';	
-	contactDetails.website ? content += '<li>Website: ' + contactDetails.website.value + '</li>' : '';	
-	content += '<li>Open hours: ' + contactDetails.open_hours + '</li>';	
+	content += '<li>Address: ' + contactDetails.address.full_addr + '</li>';
+	content += '<li>Phone: ' + contactDetails.phone.value + '</li>';
+	contactDetails.website ? content += '<li>Website: ' + contactDetails.website.value + '</li>' : '';
+	content += '<li>Open hours: ' + contactDetails.open_hours + '</li>';
 	content += '<ul>';
-	
+
 	return content;
 };
 
-parsePlatformData = function(answer) {		
+parsePlatformData = function(answer) {
 	var content = '';
 
-	_.forEach(answer.platforms, function(i) { 									
-		content += '<ul>';			
-		content += '<li>' + i.platform_name + '</li>';	
-		content += '<li>' + parseGeneralInfo(i.general_info) + '</li>';		
-		content += '<li>' + parseContactDetails(i.contact_details) + '</li>';	
-		content += '<ul>';
-	});	
-	
-	$('#platformResults .box').html(content);	
+	_.forEach(answer.platforms, function(i) {
+		content += '<table>';
+		content += '<caption>' + i.platform_name + '</caption>';
+		content += '<tr><th>General Info</th>';
+		content += '<td>' + i.general_info + '</td></tr>';
+		content += '<tr><th>Contact Details</th>';
+		content += '<td>' + i.contact_details + '</td></tr>';
+
+
+		//content += '<td>' + parseGeneralInfo(i.general_info) + '</td></tr>';
+		//content += '<li>' + parseContactDetails(i.contact_details) + '</li>';
+
+		content += '<table>';
+	});
+
+	$('#platformResults .box').html(content);
 	$('#platformResults').show();
-		
+
 };
 
 
@@ -104,7 +111,7 @@ initForm = function(data) {
 
 	$('#searchOptions input').on('change', function() {
 		var value = $('input[name=search]:checked').val(),
-			legend= $('#searchFields legend');
+				legend= $('#searchFields legend');
 
 		if (value === 'gauto') {
 			legend.html('Search by Business Name and Location (Google autocomplete)');
@@ -129,8 +136,8 @@ displayRequestData = function(data) {
 
 initAutoMap = function(data) {
 	var map = new google.maps.Map(document.getElementById('map'), {
-	  center: {lat: -33.8688, lng: 151.2195},
-	  zoom: 13
+		center: {lat: -33.8688, lng: 151.2195},
+		zoom: 13
 	});
 
 	if(!document.getElementById('pac-input')) {
@@ -159,8 +166,8 @@ initAutoMap = function(data) {
 
 	var infowindow = new google.maps.InfoWindow();
 	var marker = new google.maps.Marker({
-	  map: map,
-	  anchorPoint: new google.maps.Point(0, -29)
+		map: map,
+		anchorPoint: new google.maps.Point(0, -29)
 	});
 
 	function doThis(data) {
@@ -186,9 +193,9 @@ initAutoMap = function(data) {
 		var address = '';
 		if (place.address_components) {
 			address = [
-			  (place.address_components[0] && place.address_components[0].short_name || ''),
-			  (place.address_components[1] && place.address_components[1].short_name || ''),
-			  (place.address_components[2] && place.address_components[2].short_name || '')
+				(place.address_components[0] && place.address_components[0].short_name || ''),
+				(place.address_components[1] && place.address_components[1].short_name || ''),
+				(place.address_components[2] && place.address_components[2].short_name || '')
 			].join(' ');
 		}
 
@@ -197,7 +204,7 @@ initAutoMap = function(data) {
 		data.searchParams.address = place;
 		data.searchParams.name = place.name;
 	}
-	
+
 	autocomplete.addListener('place_changed', doThis.bind(null, data), false);
 
 	// Sets a listener on a radio button to change the filter type on Places
@@ -273,11 +280,11 @@ geocodeAddress = function(geocoder, resultsMap, data) {
 
 unifiedPlatforms = function(mergedResults) {
 	var platforms = '';
-	
-	_(mergedResults).forEach(function(n) { 
+
+	_(mergedResults).forEach(function(n) {
 		platforms += '<li><span class="icon ' + n.platform_name + '"></span></li>';
-	});			
-	
+	});
+
 	return platforms;
 };
 
@@ -302,62 +309,62 @@ organizeMergedResults = function(mergedResults) {
 	return content;
 };
 
-parseResults = function(results) {		
+parseResults = function(results) {
 	if (_.size(results) === 2) {
-		$('<h3>There are no results to display...</h3>').appendTo('#content');						
+		$('<h3>There are no results to display...</h3>').appendTo('#content');
 		$('#results').show();
 		return;
 	}
-	
+
 	var defaultImage = 'http://static.wixstatic.com/media/e9e449_0669f883fffe4119bd6e7e48519482a0.png';
-	var output = '';	
-	
-	if (results.unified_search) {	
+	var output = '';
+
+	if (results.unified_search) {
 		$('<li class="icon wix" id="unified"><span class="number">' + _.size(results.unified_search) + '</span> Unified results</li>').appendTo('.navigation');
-		output += '<div id="unifiedResult">';				
-		
-		_.forIn(results.unified_search, function(j) { 					
-			output += '<dl>';			
+		output += '<div id="unifiedResult">';
+
+		_.forIn(results.unified_search, function(j) {
+			output += '<dl>';
 			output += '<dt>';
 			output += '<img src="' + (j.image ? j.image : defaultImage) + '" />';
 			output += j.text + '; Similarity rank: ' + j.name_similarity_rank + '; Distance: ' + parseInt(j.distance) + 'm' + '<ul class="platforms">' + unifiedPlatforms(j.merged_results) + '</ul>';
-			//output += '<span class="icon search"></span>';
+			output += '<span class="icon search"></span>';
 			output += '<div class="modal">' + organizeMergedResults(j.merged_results) + '</div>';
 			output += '<div class="platformUrls">' + j.urls + '</div>';
-			output += '</dt>';							
-			
-			j.category ? output += '<dd>' + j.category + '</dd>' : output += '';							
+			output += '</dt>';
+
+			j.category ? output += '<dd>' + j.category + '</dd>' : output += '';
 			j.website ? output += '<dd class="icon website">' + '<a target="_blank" href="' + j.website + '">' + j.website + '</a></dd>' : output += '';
 			j.phone ? output += '<dd class="icon phone">' + j.phone + '</dd>' : output += '';
 			j.address ? output += '<dd class="icon location">' + j.address.full_addr + '</dd>' : output += '';
-			output += '</dl>';	
+			output += '</dl>';
 		});
 
-		output += '</div>';		
-	}	
-	
-	if (results.yelp_search) {	
+		output += '</div>';
+	}
+
+	if (results.yelp_search) {
 		$('<li class="icon yelp" id="yelp"><span class="number">' + _.size(results.yelp_search) + '</span> Yelp</li>').appendTo('.navigation');
-		output += '<div id="yelpResult">';				
-						
-		_.forIn(results.yelp_search, function(j) { 							
+		output += '<div id="yelpResult">';
+
+		_.forIn(results.yelp_search, function(j) {
 			output += '<dl>';
 			output += '<dt><img src="' + j.image + '" />' + j.text + '</dt>';
 			output += '<dd>' + j.category + '</dd>';
 			output += '<dd class="icon web">' + '<a target="_blank" href="' + j.url + '">' + j.url + '</a></dd>';
 			output += '<dd class="icon phone">' + j.phone + '</dd>';
-			output += '<dd class="icon location">' + j.address.full_addr + '</dd>';		
-			output += '</dl>';					
+			output += '<dd class="icon location">' + j.address.full_addr + '</dd>';
+			output += '</dl>';
 		});
-			
-		output += '</div>';						
+
+		output += '</div>';
 	}
 
-	if (results.factual_search) {	
+	if (results.factual_search) {
 		$('<li class="icon factual" id="factual"><span class="number">' + _.size(results.factual_search) + '</span> Factual</li>').appendTo('.navigation');
-		output += '<div id="factualResult">';				
-						
-		_.forIn(results.factual_search, function(j) { 							
+		output += '<div id="factualResult">';
+
+		_.forIn(results.factual_search, function(j) {
 			output += '<dl>';
 			output += '<dt>' + j.text + '</dt>';
 			output += '<dd>' + j.category + '</dd>';
@@ -365,120 +372,120 @@ parseResults = function(results) {
 			j.website ? output += '<dd class="icon website">' + '<a target="_blank" href="' + j.website + '">' + j.website + '</a></dd>': output += '';
 			output += '<dd class="icon email">' + '<a target="_blank" href="' + j.email + '">' + j.email + '</a></dd>';
 			output += '<dd class="icon phone">' + j.phone + '</dd>';
-			output += '<dd class="icon location">' + j.address.full_addr + '</dd>';		
-			output += '</dl>';					
+			output += '<dd class="icon location">' + j.address.full_addr + '</dd>';
+			output += '</dl>';
 		});
-			
-		output += '</div>';						
-	}	
 
-	if (results.facebook_search) {								
+		output += '</div>';
+	}
+
+	if (results.facebook_search) {
 		$('<li class="icon facebook" id="facebook"><span class="number">' + _.size(results.facebook_search) + '</span> Facebook</li>').appendTo('.navigation');
-		output += '<div id="facebookResult">';				
-								
-		_.forIn(results.facebook_search, function(j) { 							
+		output += '<div id="facebookResult">';
+
+		_.forIn(results.facebook_search, function(j) {
 			output += '<dl>';
-			output += '<dt><img src="' + j.image + '" />' + j.text + '</dt>';							
+			output += '<dt><img src="' + j.image + '" />' + j.text + '</dt>';
 			output += '<dd>' + j.category + '</dd>';
 			j.website ? output += '<dd class="icon website">' + '<a target="_blank" href="' + j.website + '">' + j.website + '</a></dd>': output += '';
 			output += '<dd class="icon facebook">' + '<a target="_blank" href="' + j.url + '">' + j.url + '</a></dd>';
-			j.phone ? output += '<dd class="icon phone">' + j.phone + '</dd>' : output += '';	
-			j.address ? output += '<dd class="icon location">' + j.address.full_addr + '</dd>' : output += '';	
-			output += '</dl>';					
+			j.phone ? output += '<dd class="icon phone">' + j.phone + '</dd>' : output += '';
+			j.address ? output += '<dd class="icon location">' + j.address.full_addr + '</dd>' : output += '';
+			output += '</dl>';
 		});
-		
-		output += '</div>';						
-	}		
 
-	if (results.google_places_search) {								
+		output += '</div>';
+	}
+
+	if (results.google_places_search) {
 		$('<li class="icon google_places" id="google_places"><span class="number">' + _.size(results.google_places_search) + '</span> Google Places</li>').appendTo('.navigation');
-		output += '<div id="google_placesResult">';				
-		
-		_.forIn(results.google_places_search, function(j) { 							
+		output += '<div id="google_placesResult">';
+
+		_.forIn(results.google_places_search, function(j) {
 			output += '<dl>';
-			output += '<dt><img src="' + j.image + '" />' + j.text + '</dt>';							
+			output += '<dt><img src="' + j.image + '" />' + j.text + '</dt>';
 			output += '<dd>' + j.category + '</dd>';
 			j.website ? output += '<dd class="icon website">' + '<a target="_blank" href="' + j.website + '">' + j.website + '</a></dd>': output += '';
 			output += '<dd class="icon google_places">' + '<a target="_blank" href="' + j.url + '">' + j.url + '</a></dd>';
 			output += '<dd class="icon phone">' + j.phone + '</dd>';
-			output += '<dd class="icon location">' + j.address.full_addr + '</dd>';		
-			output += '</dl>';					
+			output += '<dd class="icon location">' + j.address.full_addr + '</dd>';
+			output += '</dl>';
 		});
-			
-		output += '</div>';						
-	}
-	
-	if (results.googleplus_search) {								
-		$('<li class="icon googleplus" id="googleplus"><span class="number">' + _.size(results.googleplus_search) + '</span> Google Plus</li>').appendTo('.navigation');
-		output += '<div id="googleplusResult">';				
-									
-		_.forIn(results.googleplus_search, function(j) { 							
-			output += '<dl>';
-			output += '<dt><img src="' + j.image + '" />' + j.text + '</dt>';							
-			output += '<dd class="icon googleplus">' + '<a target="_blank" href="' + j.url + '">' + j.url + '</a></dd>';
-			output += '</dl>';					
-		});
-					
-		output += '</div>';						
+
+		output += '</div>';
 	}
 
-	if (results.twitter_search) {	
-		$('<li class="icon twitter" id="twitter"><span class="number">' + _.size(results.twitter_search) + '</span> Twitter</li>').appendTo('.navigation');				
-		output += '<div id="twitterResult">';			
-		
-		_.forIn(results.twitter_search, function(j) { 							
+	if (results.google_plus_search) {
+		$('<li class="icon google_plus" id="google_plus"><span class="number">' + _.size(results.google_plus_search) + '</span> Google Plus</li>').appendTo('.navigation');
+		output += '<div id="google_plusResult">';
+
+		_.forIn(results.google_plus_search, function(j) {
 			output += '<dl>';
-			output += '<dt><img src="' + j.image + '" />' + j.text + '</dt>';							
+			output += '<dt><img src="' + j.image + '" />' + j.text + '</dt>';
+			output += '<dd class="icon google_plus">' + '<a target="_blank" href="' + j.url + '">' + j.url + '</a></dd>';
+			output += '</dl>';
+		});
+
+		output += '</div>';
+	}
+
+	if (results.twitter_search) {
+		$('<li class="icon twitter" id="twitter"><span class="number">' + _.size(results.twitter_search) + '</span> Twitter</li>').appendTo('.navigation');
+		output += '<div id="twitterResult">';
+
+		_.forIn(results.twitter_search, function(j) {
+			output += '<dl>';
+			output += '<dt><img src="' + j.image + '" />' + j.text + '</dt>';
 			j.category ? output += '<dd>' + j.category + '</dd>' : output += '';
 			output += '<dd class="icon twitter">' + '<a target="_blank" href="' + j.url + '">' + j.url + '</a></dd>';
-			j.address ? output += '<dd class="icon location">' + j.address.full_addr + '</dd>' : output += '';		
-			output += '</dl>';					
+			j.address ? output += '<dd class="icon location">' + j.address.full_addr + '</dd>' : output += '';
+			output += '</dl>';
 		});
-		
-		output += '</div>';						
-	}	
 
-	if (results.youtube_search) {								
-		$('<li class="icon youtube" id="youtube"><span class="number">' + _.size(results.youtube_search) + '</span> YouTube</li>').appendTo('.navigation');	
-		output += '<div id="youtubeResult">';				
-									
-		_.forIn(results.youtube_search, function(j) { 							
-			output += '<dl>';
-			output += '<dt><img src="' + j.image + '" />' + j.text + '</dt>';							
-			output += '<dd class="icon youtube">' + '<a target="_blank" href="' + j.url + '">' + j.url + '</a></dd>';
-			output += '</dl>';					
-		});
-			
-		output += '</div>';						
+		output += '</div>';
 	}
 
-	if (results.flickr_search) {								
-		$('<li class="icon flickr" id="flickr"><span class="number">' + _.size(results.flickr_search) + '</span> Flickr</li>').appendTo('.navigation');	
-		output += '<div id="flickrResult">';				
-					
-		_.forIn(results.flickr_search, function(j) { 							
-			output += '<dl>';
-			output += '<dt><img src="http://storage.ubertor.com/rodandrhea.myubertor.com/content/image/9954.png" />' + j.text + '</dt>';							
-			output += '<dd class="icon web">' + '<a target="_blank" href="' + j.url + '">' + j.url + '</a></dd>';
-			output += '</dl>';					
-		});
-		
-		output += '</div>';						
-	}				
-	
-	$(output).appendTo('#content');
-	
-	$('.search').on('click', function() {			
-		searchByUrls(($(this).siblings('.platformUrls').html()).split(','));		
-	});	
-	
-	$('.close').on('click', function() {			
-		$('#platformResults').hide();		
-	});	
-	
-	$('.navigation li:first-child').addClass('selected');	
+	if (results.youtube_search) {
+		$('<li class="icon youtube" id="youtube"><span class="number">' + _.size(results.youtube_search) + '</span> YouTube</li>').appendTo('.navigation');
+		output += '<div id="youtubeResult">';
 
-	$('.navigation li').on('click', function() {	
+		_.forIn(results.youtube_search, function(j) {
+			output += '<dl>';
+			output += '<dt><img src="' + j.image + '" />' + j.text + '</dt>';
+			output += '<dd class="icon youtube">' + '<a target="_blank" href="' + j.url + '">' + j.url + '</a></dd>';
+			output += '</dl>';
+		});
+
+		output += '</div>';
+	}
+
+	if (results.flickr_search) {
+		$('<li class="icon flickr" id="flickr"><span class="number">' + _.size(results.flickr_search) + '</span> Flickr</li>').appendTo('.navigation');
+		output += '<div id="flickrResult">';
+
+		_.forIn(results.flickr_search, function(j) {
+			output += '<dl>';
+			output += '<dt><img src="http://storage.ubertor.com/rodandrhea.myubertor.com/content/image/9954.png" />' + j.text + '</dt>';
+			output += '<dd class="icon web">' + '<a target="_blank" href="' + j.url + '">' + j.url + '</a></dd>';
+			output += '</dl>';
+		});
+
+		output += '</div>';
+	}
+
+	$(output).appendTo('#content');
+
+	$('.search').on('click', function() {
+		searchByUrls(($(this).siblings('.platformUrls').html()).split(','));
+	});
+
+	$('.close').on('click', function() {
+		$('#platformResults').hide();
+	});
+
+	$('.navigation li:first-child').addClass('selected');
+
+	$('.navigation li').on('click', function() {
 		navigateResults(this);
 	});
 
@@ -493,16 +500,16 @@ parseResults = function(results) {
 navigateResults = function(element) {
 	$('.navigation li').removeClass('selected');
 	$(element).addClass('selected');
-	
+
 	$('#content div').hide();
-	$('#' + $(element).attr('id') + 'Result').show();		
+	$('#' + $(element).attr('id') + 'Result').show();
 };
 
-getPlatforms = function(data) {				
+getPlatforms = function(data) {
 	var platformsArray = [];
 	$('#mediaBox input[type=checkbox]').each(function () {
 		this.checked ? platformsArray.push(this.name) : '';
-	});				
+	});
 	data.platforms = platformsArray;
 };
 
@@ -510,11 +517,11 @@ getServer = function() {
 	return $('#server').val();
 };
 
-getName = function(data) {				
+getName = function(data) {
 	data.searchParams.name = $('#term').val();
 };
 
-getLatitude = function(data) {			
+getLatitude = function(data) {
 	return data.searchParams.address.geometry.location.lat;
 };
 
@@ -525,15 +532,15 @@ getLongitude = function(data) {
 getRadius = function(data) {
 	return data.searchParams.address.geometry.radius = Number($('#radius').val());
 };
-		
+
 formatAddress = function(addressObj) {
 	var address = '';
-	_.forIn(addressObj, function(i) { 
-		adress += addressObj.street + ' ' + addressObj.city + ' ' + addressObj.state + ' ' + addressObj.country + ' ' + addressObj.zipcode;					
+	_.forIn(addressObj, function(i) {
+		adress += addressObj.street + ' ' + addressObj.city + ' ' + addressObj.state + ' ' + addressObj.country + ' ' + addressObj.zipcode;
 	});
-	return address;				
+	return address;
 };
 
-$('.request').on('click',function() {			
-	$('#dataDisplay').toggle();	
+$('.request').on('click',function() {
+	$('#dataDisplay').toggle();
 });

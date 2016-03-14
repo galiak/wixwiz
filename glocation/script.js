@@ -237,14 +237,14 @@ parseResults = function(results) {
 		output += '</div>';						
 	}
 	
-	if (results.googleplus_search) {								
-		$('<li class="icon googleplus" id="googleplus"><span class="number">' + _.size(results.googleplus_search) + '</span> Google Plus</li>').appendTo('.navigation');
-		output += '<div id="googleplusResult">';				
+	if (results.google_plus_search) {
+		$('<li class="icon google_plus" id="google_plus"><span class="number">' + _.size(results.google_plus_search) + '</span> Google Plus</li>').appendTo('.navigation');
+		output += '<div id="google_plusResult">';
 									
-		_.forIn(results.googleplus_search, function(j) { 							
+		_.forIn(results.google_plus_search, function(j) {
 			output += '<dl>';
 			output += '<dt><img src="' + j.image + '" />' + j.text + '</dt>';							
-			output += '<dd class="icon googleplus">' + '<a target="_blank" href="' + j.url + '">' + j.url + '</a></dd>';
+			output += '<dd class="icon google_plus">' + '<a target="_blank" href="' + j.url + '">' + j.url + '</a></dd>';
 			output += '</dl>';					
 		});
 					
