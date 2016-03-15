@@ -95,7 +95,7 @@ parseUnifiedContactDetails = function(contactDetails) {
 	contactDetails.phone ? content += '<li>Phone [' + contactDetails.phone.source + ']: <samp>' + contactDetails.phone.value + '</samp></li>' : '';
 	contactDetails.email ? content += '<li>Email ['+ contactDetails.email.source + ']: <samp>' + contactDetails.email.value + '</samp></li>' : '';
 	contactDetails.website ? content += '<li>Website [' + contactDetails.website.source + ']: <samp><a href="' + contactDetails.website.value + '" target="_blank">' + contactDetails.website.value + '</a></samp></li>' : '';
-	contactDetails.open_hours ? content += '<li>Open hours [' + contactDetails.open_hours.source + ']: <samp>' + parseOpenHours(contactDetails.open_hours.value) + '</samp></li>' : '';
+	contactDetails.open_hours ? content += '<li>Open hours [' + contactDetails.open_hours.source + ']: <samp>' + parseOpenHours(contactDetails.open_hours.value.days) + '</samp></li>' : '';
 	content += '<ul>';
 
 	return content;
@@ -127,7 +127,7 @@ parseContactDetails = function(contactDetails) {
 	contactDetails.phone ? content += '<li>Phone: <samp>' + contactDetails.phone + '</samp></li>' : '';
 	contactDetails.email ? content += '<li>Email: <samp>' + contactDetails.email + '</samp></li>' : '';
 	contactDetails.website ? content += '<li>Website: <samp><a href="' + contactDetails.website +'" target="_blank">' + contactDetails.website + '</a></samp></li>' : '';
-	contactDetails.open_hours ? content += '<li>Open hours: <samp>' + parseOpenHours(contactDetails.open_hours) + '</samp></li>' : '';
+	contactDetails.open_hours ? content += '<li>Open hours: <samp>' + parseOpenHours(contactDetails.open_hours.days) + '</samp></li>' : '';
 	content += '<ul>';
 
 	return content;
