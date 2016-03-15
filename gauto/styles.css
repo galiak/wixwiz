@@ -46,6 +46,9 @@ pre {
     padding: 10px;
     margin: 4px 0;		
 }
+samp {
+	color: #2E86C1;
+}
 legend {
 	font-weight: bold;
 }
@@ -312,12 +315,11 @@ table.details, .details th, .details td {
 }
 #platformResults {
 	position: absolute;
-	top: 0;
-	right: 0;
-	left: 0;
+	right: 0; left: 0;
 	background-color: rgba(47, 79, 79, 0.9);
 	display: none;
 	min-height: 100%;
+	padding: 20px 0;
 }
 #platformResults .box {
 	background-color: #fff;
@@ -330,8 +332,12 @@ table.details, .details th, .details td {
 #searchOptions {
 	margin: 20px -3px;
 }
-
 #platformResults .loading {
-	top: 0; left: 0;
-	margin: 50%;
+	top: 0;
+}
+.hours li {
+	display: inline;
+}
+.link {
+	font-size: 14px;
 }

@@ -45,6 +45,7 @@ $(document).ready(function(){
 
 searchByUrls = function(urls) {
 	event.preventDefault();
+	$('#platformResults .box').empty();
 
 	var data = {
 		'urls': urls,
@@ -62,12 +63,13 @@ searchByUrls = function(urls) {
 
 parseUnifiedGeneralInfo = function(generalInfo) {
 	var content = '<ul>';
-	generalInfo.site_title ? content += '<li>Site Title [' + generalInfo.site_title.source + ']: ' + generalInfo.site_title.value + '</li>' : '';
-	generalInfo.category ? content += '<li>Category [' + generalInfo.category.source + ']: ' + generalInfo.category.value + '</li>' : '';
-	generalInfo.sub_category ? content += '<li>Sub-Category [' + generalInfo.sub_category.source + ']: ' + generalInfo.sub_category.value + '</li>' : '';
-	generalInfo.short_description ? content += '<li>Short Description [' + generalInfo.short_description.source + ']: ' + generalInfo.short_description.value + '</li>' : '';
-	generalInfo.long_description ? content += '<li>Long Description [' + generalInfo.long_description.source + ']: ' + generalInfo.long_description.value + '</li>' : '';
+	generalInfo.site_title ? content += '<li>Site Title [' + generalInfo.site_title.source + ']: <samp>' + generalInfo.site_title.value + '</samp></li>' : '';
+	generalInfo.category ? content += '<li>Category [' + generalInfo.category.source + ']: <samp>' + generalInfo.category.value + '</samp></li>' : '';
+	generalInfo.sub_category ? content += '<li>Sub-Category [' + generalInfo.sub_category.source + ']: <samp>' + parseSubCategory(generalInfo.sub_category.value) + '</samp></li>' : '';
+	generalInfo.short_description ? content += '<li>Short Description [' + generalInfo.short_description.source + ']: <samp>' + generalInfo.short_description.value + '</samp></li>' : '';
+	generalInfo.long_description ? content += '<li>Long Description [' + generalInfo.long_description.source + ']: <samp>' + generalInfo.long_description.value + '</samp></li>' : '';
 	generalInfo.logo ? content += '<li>Logo [' + generalInfo.logo.source + ']: <img src="' + generalInfo.logo.value + '"/>' + '</li>' : '';
+	generalInfo.cover_photo ? content += '<li>Cover Photo [' + generalInfo.cover_photo.source + ']: <img src="' + generalInfo.cover_photo.value + '"/>' + '</li>' : '';
 	content += '<ul>';
 
 	return content;
@@ -75,12 +77,13 @@ parseUnifiedGeneralInfo = function(generalInfo) {
 
 parseGeneralInfo = function(generalInfo) {
 	var content = '<ul>';
-	generalInfo.site_title ? content += '<li>Site Title: ' + generalInfo.site_title + '</li>' : '';
-	generalInfo.category ? content += '<li>Category: ' + generalInfo.category + '</li>' : '';
-	generalInfo.sub_category ? content += '<li>Sub-Category: ' + generalInfo.sub_category + '</li>' : '';
-	generalInfo.short_description ? content += '<li>Short Description: ' + generalInfo.short_description + '</li>' : '';
-	generalInfo.long_description ? content += '<li>Long Description: ' + generalInfo.long_description + '</li>' : '';
+	generalInfo.site_title ? content += '<li>Site Title: <samp>' + generalInfo.site_title + '</samp></li>' : '';
+	generalInfo.category ? content += '<li>Category: <samp>' + generalInfo.category + '</samp></li>' : '';
+	generalInfo.sub_category ? content += '<li>Sub-Category: <samp>' + parseSubCategory(generalInfo.sub_category) + '</samp></li>' : '';
+	generalInfo.short_description ? content += '<li>Short Description: <samp>' + generalInfo.short_description + '</samp></li>' : '';
+	generalInfo.long_description ? content += '<li>Long Description: <samp>' + generalInfo.long_description + '</samp></li>' : '';
 	generalInfo.logo ? content += '<li>Logo: <img src="' + generalInfo.logo + '"/>' + '</li>' : '';
+	generalInfo.cover_photo ? content += '<li>Cover Photo: <img src="' + generalInfo.cover_photo + '"/>' + '</li>' : '';
 	content += '<ul>';
 
 	return content;
@@ -88,23 +91,43 @@ parseGeneralInfo = function(generalInfo) {
 
 parseUnifiedContactDetails = function(contactDetails) {
 	var content = '<ul>';
-	contactDetails.address ? content += '<li>Address: ' + contactDetails.address.full_addr + '</li>' : '';
-	contactDetails.phone ? content += '<li>Phone [' + contactDetails.phone.source + ']: ' + contactDetails.phone.value + '</li>' : '';
-	contactDetails.email ? content += '<li>Email ['+ contactDetails.email.source + ']: ' + contactDetails.email.value + '</li>' : '';
-	contactDetails.website ? content += '<li>Website [' + contactDetails.website.source + ']: ' + contactDetails.website.value + '</li>' : '';
-	contactDetails.open_hours ? content += '<li>Open hours [' + contactDetails.open_hours.source + ']: ' + contactDetails.open_hours.value + '</li>' : '';
+	contactDetails.address ? content += '<li>Address: <samp>' + contactDetails.address.full_addr + '</samp></li>' : '';
+	contactDetails.phone ? content += '<li>Phone [' + contactDetails.phone.source + ']: <samp>' + contactDetails.phone.value + '</samp></li>' : '';
+	contactDetails.email ? content += '<li>Email ['+ contactDetails.email.source + ']: <samp>' + contactDetails.email.value + '</samp></li>' : '';
+	contactDetails.website ? content += '<li>Website [' + contactDetails.website.source + ']: <samp><a href="' + contactDetails.website.value + '" target="_blank">' + contactDetails.website.value + '</a></samp></li>' : '';
+	contactDetails.open_hours ? content += '<li>Open hours [' + contactDetails.open_hours.source + ']: <samp>' + parseOpenHours(contactDetails.open_hours.value) + '</samp></li>' : '';
 	content += '<ul>';
 
 	return content;
 };
 
+parseOpenHours = function(openHours) {
+	var content = '<ul class="hours">';
+
+	_.forEach(openHours, function(i) {
+		content += '<li>* ' + i.day + ': ' + i.from_hour + '-' + i.to_hour + ' *</li>';
+	});
+	content += '</ul>';
+	return content;
+};
+
+parseSubCategory= function(subCategory) {
+	var content = '<ul class="category">';
+
+	_.forEach(subCategory, function(i) {
+		content += '<li>* ' + i.name + ' *</li>';
+	});
+	content += '</ul>';
+	return content;
+};
+
 parseContactDetails = function(contactDetails) {
 	var content = '<ul>';
-	contactDetails.address ? content += '<li>Address: ' + contactDetails.address.full_addr + '</li>' : '';
-	contactDetails.phone ? content += '<li>Phone: ' + contactDetails.phone + '</li>' : '';
-	contactDetails.email ? content += '<li>Email: ' + contactDetails.email + '</li>' : '';
-	contactDetails.website ? content += '<li>Website: ' + contactDetails.website + '</li>' : '';
-	contactDetails.open_hours ? content += '<li>Open hours: ' + contactDetails.open_hours + '</li>' : '';
+	contactDetails.address ? content += '<li>Address: <samp>' + contactDetails.address.full_addr + '</samp></li>' : '';
+	contactDetails.phone ? content += '<li>Phone: <samp>' + contactDetails.phone + '</samp></li>' : '';
+	contactDetails.email ? content += '<li>Email: <samp>' + contactDetails.email + '</samp></li>' : '';
+	contactDetails.website ? content += '<li>Website: <samp><a href="' + contactDetails.website +'" target="_blank">' + contactDetails.website + '</a></samp></li>' : '';
+	contactDetails.open_hours ? content += '<li>Open hours: <samp>' + parseOpenHours(contactDetails.open_hours) + '</samp></li>' : '';
 	content += '<ul>';
 
 	return content;
@@ -123,6 +146,7 @@ parsePlatformData = function(answer) {
 			content += '<td>' + parseUnifiedContactDetails(i.contact_details) + '</td></tr>';
 		} else {
 			content += '<caption>' + i.platform_name + '</caption>';
+			i.url ? content += '<caption class="link"><a href="' + i.url + '" target="_blank">' + i.url + '<a></caption>' : '';
 			content += '<tr><th>General Info</th>';
 			content += '<td>' + parseGeneralInfo(i.general_info) + '</td></tr>';
 			content += '<tr><th>Contact Details</th>';
@@ -507,7 +531,8 @@ parseResults = function(results) {
 
 	$(output).appendTo('#content');
 
-	$('.search').on('click', function() {
+	$('.search').on('click', function(e) {
+		$('#platformResults').css('top', e.pageY);
 		$('#platformResults').show();
 		$('#platformResults .loading').show();
 		searchByUrls(($(this).siblings('.platformUrls').html()).split(','));
@@ -515,6 +540,12 @@ parseResults = function(results) {
 
 	$('.close').on('click', function() {
 		$('#platformResults').hide();
+	});
+
+	$(document).keydown(function(e) {
+		if (e.keyCode == 27) {
+			$('#platformResults').hide();
+		}
 	});
 
 	$('.navigation li:first-child').addClass('selected');
