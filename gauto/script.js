@@ -62,11 +62,11 @@ searchByUrls = function(urls) {
 
 parseUnifiedGeneralInfo = function(generalInfo) {
 	var content = '<ul>';
-	content += '<li>Site Title [' + generalInfo.site_title.source + ']: ' + generalInfo.site_title.value + '</li>';
-	content += '<li>Category [' + generalInfo.category.source + ']: ' + generalInfo.category.value + '</li>';
-	content += '<li>Sub-Category [' + generalInfo.sub_category.source + ']: ' + generalInfo.sub_category.value + '</li>';
-	content += '<li>Short Description [' + generalInfo.short_description.source + ']: ' + generalInfo.short_description.value + '</li>';
-	content += '<li>Long Description [' + generalInfo.long_description.source + ']: ' + generalInfo.long_description.value + '</li>';
+	generalInfo.site_title ? content += '<li>Site Title [' + generalInfo.site_title.source + ']: ' + generalInfo.site_title.value + '</li>' : '';
+	generalInfo.category ? content += '<li>Category [' + generalInfo.category.source + ']: ' + generalInfo.category.value + '</li>' : '';
+	generalInfo.sub_category ? content += '<li>Sub-Category [' + generalInfo.sub_category.source + ']: ' + generalInfo.sub_category.value + '</li>' : '';
+	generalInfo.short_description ? content += '<li>Short Description [' + generalInfo.short_description.source + ']: ' + generalInfo.short_description.value + '</li>' : '';
+	generalInfo.long_description ? content += '<li>Long Description [' + generalInfo.long_description.source + ']: ' + generalInfo.long_description.value + '</li>' : '';
 	generalInfo.logo ? content += '<li>Logo [' + generalInfo.logo.source + ']: <img src="' + generalInfo.logo.value + '"/>' + '</li>' : '';
 	content += '<ul>';
 
@@ -75,11 +75,11 @@ parseUnifiedGeneralInfo = function(generalInfo) {
 
 parseGeneralInfo = function(generalInfo) {
 	var content = '<ul>';
-	content += '<li>Site Title: ' + generalInfo.site_title + '</li>';
-	content += '<li>Category: ' + generalInfo.category + '</li>';
-	content += '<li>Sub-Category: ' + generalInfo.sub_category + '</li>';
-	content += '<li>Short Description: ' + generalInfo.short_description + '</li>';
-	content += '<li>Long Description: ' + generalInfo.long_description + '</li>';
+	generalInfo.site_title ? content += '<li>Site Title: ' + generalInfo.site_title + '</li>' : '';
+	generalInfo.category ? content += '<li>Category: ' + generalInfo.category + '</li>' : '';
+	generalInfo.sub_category ? content += '<li>Sub-Category: ' + generalInfo.sub_category + '</li>' : '';
+	generalInfo.short_description ? content += '<li>Short Description: ' + generalInfo.short_description + '</li>' : '';
+	generalInfo.long_description ? content += '<li>Long Description: ' + generalInfo.long_description + '</li>' : '';
 	generalInfo.logo ? content += '<li>Logo: <img src="' + generalInfo.logo + '"/>' + '</li>' : '';
 	content += '<ul>';
 
@@ -88,11 +88,11 @@ parseGeneralInfo = function(generalInfo) {
 
 parseUnifiedContactDetails = function(contactDetails) {
 	var content = '<ul>';
-	content += '<li>Address: ' + contactDetails.address.full_addr + '</li>';
-	content += '<li>Phone [' + contactDetails.phone.source + ']: ' + contactDetails.phone.value + '</li>';
-	content += '<li>Email ['+ contactDetails.email.source + ']: ' + contactDetails.email.value + '</li>';
+	contactDetails.address ? content += '<li>Address: ' + contactDetails.address.full_addr + '</li>' : '';
+	contactDetails.phone ? content += '<li>Phone [' + contactDetails.phone.source + ']: ' + contactDetails.phone.value + '</li>' : '';
+	contactDetails.email ? content += '<li>Email ['+ contactDetails.email.source + ']: ' + contactDetails.email.value + '</li>' : '';
 	contactDetails.website ? content += '<li>Website [' + contactDetails.website.source + ']: ' + contactDetails.website.value + '</li>' : '';
-	content += '<li>Open hours [' +contactDetails.open_hours.source + ']: ' + contactDetails.open_hours.value + '</li>';
+	contactDetails.open_hours ? content += '<li>Open hours [' + contactDetails.open_hours.source + ']: ' + contactDetails.open_hours.value + '</li>' : '';
 	content += '<ul>';
 
 	return content;
@@ -101,10 +101,10 @@ parseUnifiedContactDetails = function(contactDetails) {
 parseContactDetails = function(contactDetails) {
 	var content = '<ul>';
 	contactDetails.address ? content += '<li>Address: ' + contactDetails.address.full_addr + '</li>' : '';
-	content += '<li>Phone: ' + contactDetails.phone + '</li>';
-	content += '<li>Email: ' + contactDetails.email + '</li>';
+	contactDetails.phone ? content += '<li>Phone: ' + contactDetails.phone + '</li>' : '';
+	contactDetails.email ? content += '<li>Email: ' + contactDetails.email + '</li>' : '';
 	contactDetails.website ? content += '<li>Website: ' + contactDetails.website + '</li>' : '';
-	content += '<li>Open hours: ' + contactDetails.open_hours + '</li>';
+	contactDetails.open_hours ? content += '<li>Open hours: ' + contactDetails.open_hours + '</li>' : '';
 	content += '<ul>';
 
 	return content;
@@ -133,8 +133,8 @@ parsePlatformData = function(answer) {
 	});
 
 	$('#platformResults .box').html(content);
-	$('#platformResults').show();
-
+	$('#platformResults .loading').hide();
+	$('#platformResults .box').show();
 };
 
 
@@ -508,6 +508,8 @@ parseResults = function(results) {
 	$(output).appendTo('#content');
 
 	$('.search').on('click', function() {
+		$('#platformResults').show();
+		$('#platformResults .loading').show();
 		searchByUrls(($(this).siblings('.platformUrls').html()).split(','));
 	});
 

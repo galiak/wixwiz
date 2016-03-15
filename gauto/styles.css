@@ -57,6 +57,13 @@ table, th, td {
 	word-break: break-word;
 	text-align: center;
 }
+th, td {
+	padding: 4px;
+}
+caption {
+	color: #2F4F4F;
+	font-size: 24px;
+}
 #search {
 	float: left;
 	clear: both;
@@ -126,6 +133,10 @@ span.icon {
 }
 .close {
 	background-image: url(http://www.iconsdb.com/icons/preview/green/close-window-xxl.png);
+	border: 1px solid #fff;
+	border-radius: 12px;
+	background-color: #fff;
+	cursor: pointer;
 }
 .request {
 	background-image: url(https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-help-circled-128.png);
@@ -277,9 +288,13 @@ span.icon {
 	width: 100%;
 	border-left: 1px solid #2E86C1;
 	padding: 4px;
+	margin: 10px 0;
 }
 table.details, .details th, .details td {
 	text-align: left;
+}
+.details th {
+	width: 120px;
 }
 .details img {
 	width: 50px;
@@ -298,18 +313,26 @@ table.details, .details th, .details td {
 #platformResults {
 	position: absolute;
 	top: 0;
-	bottom: 0;
 	right: 0;
 	left: 0;
-	background-color: rgba(0, 255, 0, 0.3);
+	background-color: rgba(47, 79, 79, 0.9);
 	display: none;
+	min-height: 100%;
 }
 #platformResults .box {
 	background-color: #fff;
-	margin: 0;
+	margin: 6px 0;
 	padding: 10px;
-	width: 90%;
+	width: calc(100% - 94px);
+	clear: none;
+	display: none;
 }
 #searchOptions {
 	margin: 20px -3px;
+}
+
+#platformResults .loading {
+	position: absolute;
+	top: 0;
+	margin: 50%;
 }
