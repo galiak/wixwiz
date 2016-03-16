@@ -159,8 +159,27 @@ parsePlatformData = function(answer) {
 	$('#platformResults .box').html(content);
 	$('#platformResults .loading').hide();
 	$('#platformResults .box').show();
+
+	imagePreview();
 };
 
+imagePreview = function(){
+	xOffset = 10;
+	yOffset = 30;
+
+	$('.details img').hover(
+		function(e){
+			$('body').append('<div id="preview"><img src="'+ this.src + '" /></div>');
+			$('#preview')
+				.css('top',(e.pageY - xOffset) + 'px')
+				.css('left',(e.pageX + yOffset) + 'px')
+				.fadeIn('fast');
+		},
+		function(){
+			$('#preview').remove();
+		}
+	);
+};
 
 initForm = function(data) {
 	$('input[name=search]:checked').val() === 'gauto' ? initAutoMap(data) : initRadiusMap(data);
@@ -335,9 +354,10 @@ geocodeAddress = function(geocoder, resultsMap, data) {
 };
 
 unifiedPlatforms = function(mergedResults) {
-	var platforms = '';
+	var platforms = '',
+		sorted = _.sortBy(mergedResults, 'platform_name');
 
-	_(mergedResults).forEach(function(n) {
+	_(sorted).forEach(function(n) {
 		platforms += '<li><span class="icon ' + n.platform_name + '"></span></li>';
 	});
 
@@ -351,12 +371,12 @@ organizeMergedResults = function(mergedResults) {
 	_.forEach(mergedResults, function(i) {
 
 		content += '<tr>';
-		content +=	'<th>' + i.platform_name + '</th>';
+		content += '<th class="platformCell"><span class="icon ' + i.platform_name + '"></span></th>';
 		content += '<td>' + i.text + '</td>';
 		content += '<td>' + i.category + '</td>';
 		content += i.address ? '<td>' + i.address.full_addr + '</td>': '<td>--/--</td>';
-		content += '<td>' + i.phone + '</td>';
-		content += '<td>' + '<a target="_blank" href="' + i.url + '">' + i.url + '</a>' + '</td>';
+		content += '<td class="phoneCell">' + i.phone + '</td>';
+		content += '<td class="urlCol">' + '<a target="_blank" href="' + i.url + '">' + i.url + '</a>' + '</td>';
 		content += i.website ? '<td>' + '<a target="_blank" href="' + i.website + '">' + i.website + '</a>' + '</td>' : '<td>--/--</td>';
 		content += '<td>' + '<img src="' + i.image + '" />' + '</td>';
 		content +=	'</tr>';
@@ -385,7 +405,7 @@ parseResults = function(results) {
 			output += '<img src="' + (j.image ? j.image : defaultImage) + '" />';
 			output += j.text + '; Similarity rank: ' + j.name_similarity_rank + '; Distance: ' + parseInt(j.distance) + 'm' + '<ul class="platforms">' + unifiedPlatforms(j.merged_results) + '</ul>';
 			output += '<span class="icon search"></span>';
-			output += '<div class="modal">' + organizeMergedResults(j.merged_results) + '</div>';
+			output += '<div class="modal">' + organizeMergedResults(_.sortBy(j.merged_results, 'platform_name')) + '</div>';
 			output += '<div class="platformUrls">' + j.urls + '</div>';
 			output += '</dt>';
 
@@ -545,6 +565,7 @@ parseResults = function(results) {
 	$(document).keydown(function(e) {
 		if (e.keyCode == 27) {
 			$('#platformResults').hide();
+			$('.modal').hide();
 		}
 	});
 
@@ -574,7 +595,9 @@ navigateResults = function(element) {
 
 getPlatforms = function(data) {
 	var platformsArray = [];
-	if($('#mediaBox input[name=all]:checked').val() !== 'all') {
+	if($('#mediaBox input[name=all]:checked').val() === 'all') {
+		platformsArray = ['yelp', 'facebook', 'google_places', 'factual'];
+	} else {
 		$('#mediaBox input[type=checkbox]').each(function () {
 			this.checked ? platformsArray.push($(this).val()) : '';
 		});
