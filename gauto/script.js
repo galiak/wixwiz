@@ -133,17 +133,82 @@ parseContactDetails = function(contactDetails) {
 	return content;
 };
 
+parseWebsite = function(website) {
+	var content = '<ul class="websiteData">';
+
+	_(website.social_links).forEach(function(n) {
+		content += '<li><a class="icon ' + n.name + '" target="_blank" href="' + n.url + '"></a></li>';
+	});
+	_(website.photos).forEach(function(n) {
+		content += '<li><img src="' + n.photo_url + '" /></li>';
+	});
+	content += '<ul>';
+
+	return content;
+};
+
+parseUnifiedFeeds = function(feeds){
+	var content = '<h4>' + feeds.source + ': </h4>';
+	content += '<ul class="feeds">';
+	_(feeds.value).forEach(function(n) {
+		var time = new Date(n.created_time);
+		content += '<li><span class="icon post"></span> Created: ' + time + '<br /> From: ' + n.from + '<br /> Name: ' + n.name + '<br /> Description: ' + n.description + '<br /> Message: ' + n.message + '<br /><img src="' + n.picture + '"/></li>';
+	});
+	content += '<ul>';
+
+	return content;
+};
+
+parseUnifiedPhotos = function(photos) {
+	var content = '<h4>' + photos.source + ': </h4>';
+
+	_(photos.value).forEach(function(n) {
+		content += '<ul class="photos">';
+		content += '<li>' + n.name + '</li>';
+		_(n.photos).forEach(function(i) {
+			content += '<li><img src="' + i.photo_url + '" /></li>';
+		});
+		content += '</ul>';
+	});
+
+	return content;
+};
+
+parseUnifiedVideos = function(videos){
+	var content = '<h4>' + videos.source + ': </h4>';
+
+	_(videos.value).forEach(function(n) {
+		content += '<ul class="videos">';
+		content += '<li>' + n.description + '</li>';
+		_(n.videos).forEach(function(i) {
+			content += '<li class="item">' + i.description + ' <a target="_blank" href="' + i.url + '">' + i.url + '</a></li>';
+		});
+		content += '</ul>';
+	});
+
+	return content;
+};
+
 parsePlatformData = function(answer) {
-	var content = '';
+	var content = '',
+		emptyCell = '<td></td></tr>';
 
 	_.forEach(answer.platforms, function(i) {
 		content += '<table class="details">';
 		if(i.platform_name === 'unified_fields') {
 			content += '<caption>' + i.platform_name + '</caption>';
 			content += '<tr><th>General Info</th>';
-			content += '<td>' + parseUnifiedGeneralInfo(i.general_info) + '</td></tr>';
+			i.general_info ? content += '<td>' + parseUnifiedGeneralInfo(i.general_info) + '</td></tr>' : emptyCell;
 			content += '<tr><th>Contact Details</th>';
-			content += '<td>' + parseUnifiedContactDetails(i.contact_details) + '</td></tr>';
+			i.contact_details ? content += '<td>' + parseUnifiedContactDetails(i.contact_details) + '</td></tr>' : emptyCell;
+			content += '<tr><th>Official Website Data</th>';
+			i.official_website_data ? content += '<td>' + parseWebsite(i.official_website_data) + '</td></tr>' : emptyCell;
+			content += '<tr><th>Feeds</th>';
+			i.feeds ? content += '<td>' + parseUnifiedFeeds(_.first(i.feeds)) + '</td></tr>' : '<td></td></tr>';
+			content += '<tr><th>Photos</th>';
+			i.photos_albums ? content += '<td>' + parseUnifiedPhotos(_.first(i.photos_albums)) + '</td></tr>' : emptyCell;
+			content += '<tr><th>Videos</th>';
+			i.videos_albums ? content += '<td>' + parseUnifiedVideos(_.first(i.videos_albums)) + '</td></tr>' : emptyCell;
 		} else {
 			content += '<caption>' + i.platform_name + '</caption>';
 			i.url ? content += '<caption class="link"><a href="' + i.url + '" target="_blank">' + i.url + '<a></caption>' : '';

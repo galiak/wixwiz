@@ -68,6 +68,9 @@ caption {
 	color: #2F4F4F;
 	font-size: 24px;
 }
+h4 {
+	margin: 6px 0;
+}
 #search {
 	float: left;
 	clear: both;
@@ -131,6 +134,12 @@ span.icon {
 }
 .factual {
 	background-image: url(https://avatars0.githubusercontent.com/u/132986?v=3&s=200);
+}
+.instagram {
+	background-image: url(http://vignette1.wikia.nocookie.net/criminal-case-grimsborough/images/d/d6/Instagram_by_r4st3reyez-d7z5x9q.png/revision/latest?cb=20151204201032);
+}
+.post {
+	background-image: url(https://www.facebook.com/images/icons/post.gif);
 }
 .search {
 	background-image: url(https://cdn1.iconfinder.com/data/icons/education-set-01/512/search-text-512.png);
@@ -365,4 +374,17 @@ td.urlCol a {
 	background-color: #2E86C1;
 	border-radius: 4px;
 	display: none;
+}
+.websiteData li {
+	display: inline;
+}
+.photos{
+	float: left;
+	margin-right: 20px;
+}
+.videos {
+	list-style-position: inside;
+}
+.videos li.item {
+	list-style-type: circle;
 }
