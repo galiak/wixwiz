@@ -159,6 +159,29 @@ parseUnifiedFeeds = function(feeds){
 	return content;
 };
 
+parseUnifiedReviews = function(reviews){
+	var content = '<h4>' + reviews.source + ': </h4>';
+	content += '<ul class="reviews">';
+	_(reviews.value).forEach(function(n) {
+		var time = new Date(n.time);
+		content += '<li class="item">Text: ' + n.text + '<br />Created: ' + time + '<br /> Author: ' + n.author_name + (n.author_photo ? '<img src="https:' + n.author_photo + '" />' : '') + '</li>';
+	});
+	content += '<ul>';
+
+	return content;
+};
+
+parseReviews = function(reviews){
+	var content = '<ul class="reviews">';
+	_(reviews).forEach(function(n) {
+		var time = new Date(n.time);
+		content += '<li class="item">Text: ' + n.text + '<br />Created: ' + time + '<br /> Author: ' + n.author_name + (n.author_photo ? '<img src="https:' + n.author_photo + '" />' : '') + '</li>';
+	});
+	content += '<ul>';
+
+	return content;
+};
+
 parseUnifiedPhotos = function(photos) {
 	var content = '<h4>' + photos.source + ': </h4>';
 
@@ -232,7 +255,9 @@ parsePlatformData = function(answer) {
 			content += '<tr><th>Official Website Data</th>';
 			i.official_website_data ? content += '<td>' + parseWebsite(i.official_website_data) + '</td></tr>' : content += emptyCell;
 			content += '<tr><th>Feeds</th>';
-			i.feeds ? content += '<td>' + parseUnifiedFeeds(_.first(i.feeds)) + '</td></tr>' : '<td></td></tr>';
+			i.feeds ? content += '<td>' + parseUnifiedFeeds(_.first(i.feeds)) + '</td></tr>' : content += emptyCell;
+			content += '<tr><th>Reviews</th>';
+			i.reviews ? content += '<td>' + parseUnifiedReviews(i.reviews) + '</td></tr>' : content += emptyCell;
 			content += '<tr><th>Photos</th>';
 			i.photos_albums ? content += '<td>' + parseUnifiedPhotos(_.first(i.photos_albums)) + '</td></tr>' : content += emptyCell;
 			content += '<tr><th>Videos</th>';
@@ -244,6 +269,8 @@ parsePlatformData = function(answer) {
 			content += '<td>' + parseGeneralInfo(i.general_info) + '</td></tr>';
 			content += '<tr><th>Contact Details</th>';
 			content += '<td>' + parseContactDetails(i.contact_details) + '</td></tr>';
+			content += '<tr><th>Reviews</th>';
+			i.reviews ? content += '<td>' + parseReviews(i.reviews) + '</td></tr>' : content += emptyCell;
 			content += '<tr><th>Photos</th>';
 			i.photos_albums ? content += '<td>' + (i.platform_name === 'facebook_onboarding' ? parseFacebookPhotos(i.photos_albums) : parsePhotos(_.first(i.photos_albums))) + '</td></tr>' : content += emptyCell;
 		}

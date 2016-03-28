@@ -382,9 +382,8 @@ td.urlCol a {
 	float: left;
 	margin-right: 20px;
 }
-.videos {
-	list-style-position: inside;
-}
-.videos li.item {
+.videos li.item, .reviews li.item {
 	list-style-type: circle;
+	list-style-position: inside;
+	margin: 10px 0;
 }
