@@ -247,7 +247,7 @@ parsePlatformData = function(answer) {
 	_.forEach(answer.platforms, function(i) {
 		content += '<table class="details">';
 		if(i.platform_name === 'unified_fields') {
-			content += '<caption>' + i.platform_name + '</caption>';
+			content += '<caption><span class="icon response"></span>' + i.platform_name + '</caption>';
 			content += '<tr><th>General Info</th>';
 			i.general_info ? content += '<td>' + parseUnifiedGeneralInfo(i.general_info) + '</td></tr>' : content += emptyCell;
 			content += '<tr><th>Contact Details</th>';
@@ -282,12 +282,13 @@ parsePlatformData = function(answer) {
 	$('#platformResults .loading').hide();
 	$('#platformResults .box').show();
 
+	displayResultData(answer);
 	imagePreview();
 };
 
 imagePreview = function(){
-	xOffset = 10;
-	yOffset = 30;
+	var xOffset = 10,
+			yOffset = 30;
 
 	$('.details img').hover(
 		function(e){
@@ -329,6 +330,19 @@ initForm = function(data) {
 
 displayRequestData = function(data) {
 	$('#requestData').html(JSON.stringify(data, undefined, 2));
+};
+
+displayResultData = function(data) {
+	var xOffset = 10,
+		yOffset = 30;
+
+	$('.response').on('click', function(e) {
+		$('#responseDisplay')
+			.css('top',(e.pageY - xOffset) + 'px')
+			.css('left',(e.pageX + yOffset) + 'px')
+			.toggle();
+	});
+	$('#resultData').html(JSON.stringify(data, undefined, 2));
 };
 
 initAutoMap = function(data) {
@@ -756,5 +770,5 @@ formatAddress = function(addressObj) {
 };
 
 $('.request').on('click',function() {
-	$('#dataDisplay').toggle();
+	$('#requestDisplay').toggle();
 });

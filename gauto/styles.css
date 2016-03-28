@@ -151,7 +151,7 @@ span.icon {
 	background-color: #fff;
 	cursor: pointer;
 }
-.request {
+.request, .response {
 	background-image: url(https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-help-circled-128.png);
 	cursor: pointer;
 }
@@ -165,7 +165,7 @@ span.icon {
 	margin-right: 60px;	
 	max-height: 500px;	
 }	
-#dataDisplay {
+#requestDisplay, #responseDisplay {
 	overflow-y: auto;
 	overflow-x: hidden;
 	height: 500px; width: 530px;	
@@ -174,8 +174,9 @@ span.icon {
 	background-color: #E5E8E8;
 	display: none;
 	right: 0;
+	z-index: 2;
 }
-#dataDisplay pre {
+#requestDisplay pre, #responseDisplay pre {
 	min-height: 470px;		
 }
 .wrapper > li {
