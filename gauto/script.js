@@ -174,6 +174,19 @@ parseUnifiedPhotos = function(photos) {
 	return content;
 };
 
+parsePhotos = function(photoAlbums) {
+	if (_(photoAlbums.photos)) {
+		var content = '<ul class="photos">';
+		_(photoAlbums.photos).forEach(function(n) {
+			content += '<li>' + n.description + '</li>';
+			content += '<li><img src="' + n.photo_url + '" /></li>';
+		});
+		content += '</ul>';
+
+		return content;
+	}
+};
+
 parseUnifiedVideos = function(videos){
 	var content = '<h4>' + videos.source + ': </h4>';
 
@@ -198,17 +211,17 @@ parsePlatformData = function(answer) {
 		if(i.platform_name === 'unified_fields') {
 			content += '<caption>' + i.platform_name + '</caption>';
 			content += '<tr><th>General Info</th>';
-			i.general_info ? content += '<td>' + parseUnifiedGeneralInfo(i.general_info) + '</td></tr>' : emptyCell;
+			i.general_info ? content += '<td>' + parseUnifiedGeneralInfo(i.general_info) + '</td></tr>' : content += emptyCell;
 			content += '<tr><th>Contact Details</th>';
-			i.contact_details ? content += '<td>' + parseUnifiedContactDetails(i.contact_details) + '</td></tr>' : emptyCell;
+			i.contact_details ? content += '<td>' + parseUnifiedContactDetails(i.contact_details) + '</td></tr>' : content += emptyCell;
 			content += '<tr><th>Official Website Data</th>';
-			i.official_website_data ? content += '<td>' + parseWebsite(i.official_website_data) + '</td></tr>' : emptyCell;
+			i.official_website_data ? content += '<td>' + parseWebsite(i.official_website_data) + '</td></tr>' : content += emptyCell;
 			content += '<tr><th>Feeds</th>';
 			i.feeds ? content += '<td>' + parseUnifiedFeeds(_.first(i.feeds)) + '</td></tr>' : '<td></td></tr>';
 			content += '<tr><th>Photos</th>';
-			i.photos_albums ? content += '<td>' + parseUnifiedPhotos(_.first(i.photos_albums)) + '</td></tr>' : emptyCell;
+			i.photos_albums ? content += '<td>' + parseUnifiedPhotos(_.first(i.photos_albums)) + '</td></tr>' : content += emptyCell;
 			content += '<tr><th>Videos</th>';
-			i.videos_albums ? content += '<td>' + parseUnifiedVideos(_.first(i.videos_albums)) + '</td></tr>' : emptyCell;
+			i.videos_albums ? content += '<td>' + parseUnifiedVideos(_.first(i.videos_albums)) + '</td></tr>' : content += emptyCell;
 		} else {
 			content += '<caption>' + i.platform_name + '</caption>';
 			i.url ? content += '<caption class="link"><a href="' + i.url + '" target="_blank">' + i.url + '<a></caption>' : '';
@@ -216,6 +229,8 @@ parsePlatformData = function(answer) {
 			content += '<td>' + parseGeneralInfo(i.general_info) + '</td></tr>';
 			content += '<tr><th>Contact Details</th>';
 			content += '<td>' + parseContactDetails(i.contact_details) + '</td></tr>';
+			content += '<tr><th>Photos</th>';
+			i.photos_albums ? content += '<td>' + (i.platform_name === 'facebook_onboarding' ? parseUnifiedPhotos(_.first(i.photos_albums)) : parsePhotos(_.first(i.photos_albums))) + '</td></tr>' : content += emptyCell;
 		}
 
 		content += '<table>';
