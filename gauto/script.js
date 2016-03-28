@@ -168,6 +168,17 @@ parseUnifiedFeeds = function(feeds){
 	return content;
 };
 
+parseUnifiedEvents = function(events){
+	var content = '<h4>' + events.source + ': </h4>';
+	content += '<ul class="events">';
+	_(events.value).forEach(function(n) {
+		content += '<li>Name: ' + n.name + '<br /> Description: ' + n.description + '<br /><img src="' + n.image_url + '"/></li>';
+	});
+	content += '<ul>';
+
+	return content;
+};
+
 parseUnifiedReviews = function(reviews){
 	var content = '<h4>' + reviews.source + ': </h4>';
 	content += '<ul class="reviews">';
@@ -263,7 +274,9 @@ parsePlatformData = function(answer) {
 			i.contact_details ? content += '<td>' + parseUnifiedContactDetails(i.contact_details) + '</td></tr>' : content += emptyCell;
 			content += '<tr><th>Official Website Data</th>';
 			i.official_website_data ? content += '<td>' + parseWebsite(i.official_website_data) + '</td></tr>' : content += emptyCell;
-			content += '<tr><th>Feeds</th>';
+			content += '<tr><th>Events</th>';
+			i.events ? content += '<td>' + parseUnifiedEvents(_.first(i.events)) + '</td></tr>' : content += emptyCell;
+			content += '<tr><th>Reviews</th>';
 			i.feeds ? content += '<td>' + parseUnifiedFeeds(_.first(i.feeds)) + '</td></tr>' : content += emptyCell;
 			content += '<tr><th>Reviews</th>';
 			i.reviews ? content += '<td>' + parseUnifiedReviews(i.reviews) + '</td></tr>' : content += emptyCell;
@@ -711,11 +724,12 @@ parseResults = function(results) {
 		if (e.keyCode == 27) {
 			$('#platformResults').hide();
 			$('.modal').hide();
+			$('#responseDisplay').hide();
+			$('#requestDisplay').hide();
 		}
 	});
 
 	$('.navigation li:first-child').addClass('selected');
-
 
 	$('.navigation li').on('click', function() {
 		navigateResults(this);

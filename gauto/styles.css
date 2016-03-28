@@ -308,6 +308,7 @@ span.icon {
 }
 table.details, .details th, .details td {
 	text-align: left;
+	vartical-align: top;
 }
 .details th {
 	width: 120px;
