@@ -68,6 +68,15 @@ parseUnifiedGeneralInfo = function(generalInfo) {
 	generalInfo.sub_category ? content += '<li>Sub-Category [' + generalInfo.sub_category.source + ']: <samp>' + parseSubCategory(generalInfo.sub_category.value) + '</samp></li>' : '';
 	generalInfo.short_description ? content += '<li>Short Description [' + generalInfo.short_description.source + ']: <samp>' + generalInfo.short_description.value + '</samp></li>' : '';
 	generalInfo.long_description ? content += '<li>Long Description [' + generalInfo.long_description.source + ']: <samp>' + generalInfo.long_description.value + '</samp></li>' : '';
+
+	generalInfo.general_info ? content += '<li>General [' + generalInfo.general_info.source + ']: <samp>' + generalInfo.general_info.value + '</samp></li>' : '';
+	generalInfo.mission ? content += '<li>Mission [' + generalInfo.mission.source + ']: <samp>' + generalInfo.mission.value + '</samp></li>' : '';
+	generalInfo.products ? content += '<li>Products [' + generalInfo.products.source + ']: <samp>' + generalInfo.products.value + '</samp></li>' : '';
+	generalInfo.company_overview ? content += '<li>Company Overview [' + generalInfo.company_overview.source + ']: <samp>' + generalInfo.company_overview.value + '</samp></li>' : '';
+	generalInfo.members ? content += '<li>Members [' + generalInfo.members.source + ']: <samp>' + generalInfo.members.value + '</samp></li>' : '';
+	generalInfo.public_transit ? content += '<li>Public Transit [' + generalInfo.public_transit.source + ']: <samp>' + generalInfo.public_transit.value + '</samp></li>' : '';
+	generalInfo.start_info ? content += '<li>Start Info [' + generalInfo.start_info.source + ']: <samp>' + generalInfo.start_info.value.type + ' ' + (generalInfo.start_info.value.date ? generalInfo.start_info.value.date.year : 'Unspecified') + '</samp></li>' : '';
+
 	generalInfo.logo ? content += '<li>Logo [' + generalInfo.logo.source + ']: <img src="' + generalInfo.logo.value + '"/>' + '</li>' : '';
 	generalInfo.cover_photo ? content += '<li>Cover Photo [' + generalInfo.cover_photo.source + ']: <img src="' + generalInfo.cover_photo.value + '"/>' + '</li>' : '';
 	content += '<ul>';
