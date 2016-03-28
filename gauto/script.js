@@ -174,6 +174,21 @@ parseUnifiedPhotos = function(photos) {
 	return content;
 };
 
+parseFacebookPhotos = function(photos) {
+	var content = '';
+
+	_(photos).forEach(function(n) {
+		content += '<ul class="photos">';
+		content += '<li>' + n.name + '</li>';
+		_(n.photos).forEach(function(i) {
+			content += '<li><img src="' + i.photo_url + '" /></li>';
+		});
+		content += '</ul>';
+	});
+
+	return content;
+};
+
 parsePhotos = function(photoAlbums) {
 	if (_(photoAlbums.photos)) {
 		var content = '<ul class="photos">';
@@ -230,7 +245,7 @@ parsePlatformData = function(answer) {
 			content += '<tr><th>Contact Details</th>';
 			content += '<td>' + parseContactDetails(i.contact_details) + '</td></tr>';
 			content += '<tr><th>Photos</th>';
-			i.photos_albums ? content += '<td>' + (i.platform_name === 'facebook_onboarding' ? parseUnifiedPhotos(_.first(i.photos_albums)) : parsePhotos(_.first(i.photos_albums))) + '</td></tr>' : content += emptyCell;
+			i.photos_albums ? content += '<td>' + (i.platform_name === 'facebook_onboarding' ? parseFacebookPhotos(i.photos_albums) : parsePhotos(_.first(i.photos_albums))) + '</td></tr>' : content += emptyCell;
 		}
 
 		content += '<table>';
