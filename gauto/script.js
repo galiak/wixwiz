@@ -351,7 +351,8 @@ initForm = function(data) {
 };
 
 displayRequestData = function(data) {
-	$('#requestData').html(JSON.stringify(data, undefined, 2));
+	$('#requestDisplay').draggable();
+	$('#requestData').jsonViewer(data);
 };
 
 displayResultData = function(data) {
@@ -364,7 +365,8 @@ displayResultData = function(data) {
 			.css('left',(e.pageX + yOffset) + 'px')
 			.toggle();
 	});
-	$('#resultData').html(JSON.stringify(data, undefined, 2));
+	$('#responseDisplay').draggable();
+	$('#resultData').jsonViewer(data);
 };
 
 initAutoMap = function(data) {
