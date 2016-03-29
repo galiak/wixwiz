@@ -276,7 +276,7 @@ parsePlatformData = function(answer) {
 			i.official_website_data ? content += '<td>' + parseWebsite(i.official_website_data) + '</td></tr>' : content += emptyCell;
 			content += '<tr><th>Events</th>';
 			i.events ? content += '<td>' + parseUnifiedEvents(_.first(i.events)) + '</td></tr>' : content += emptyCell;
-			content += '<tr><th>Reviews</th>';
+			content += '<tr><th>Feeds</th>';
 			i.feeds ? content += '<td>' + parseUnifiedFeeds(_.first(i.feeds)) + '</td></tr>' : content += emptyCell;
 			content += '<tr><th>Reviews</th>';
 			i.reviews ? content += '<td>' + parseUnifiedReviews(i.reviews) + '</td></tr>' : content += emptyCell;
