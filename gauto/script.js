@@ -25,6 +25,7 @@ $(document).ready(function(){
 		$('.navigation').empty();
 		$('#content').empty();
 		getPlatforms(data);
+		shouldAddFilter(data);
 		if ($('input[name=search]:checked').val() === 'glocation') {
 			getName(data);
 			getRadius(data);
@@ -632,6 +633,10 @@ navigateResults = function(element) {
 
 	$('#content').find('div').hide();
 	$('#' + $(element).attr('id') + 'Result').show();
+};
+
+shouldAddFilter = function (data) {
+	data.searchParams.filter = $('input[name=filter]').is(':checked');
 };
 
 getPlatforms = function(data) {
