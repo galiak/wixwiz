@@ -94,66 +94,66 @@ span.icon {
 	float: left;
 }
 .phone {
-	background-image: url(https://cdn1.iconfinder.com/data/icons/MetroStation-PNG/128/MB__phone.png);				
+	background-image: url(images/phone.png);
 	
 }
 .location {
-	background-image: url(http://www.spotdem.com/wp-content/uploads/2014/10/Maps-icon.png);
+	background-image: url(images/map.png);
 }	
 .web {
-	background-image: url(https://cdn2.iconfinder.com/data/icons/aami-web-internet/64/aami7-71-512.png);
+	background-image: url(images/web.png);
 }
 .email {
-	background-image: url(https://cdn0.iconfinder.com/data/icons/seo-smart-pack/128/grey_new_seo-02-128.png);
+	background-image: url(images/email.png);
 }
 .website {
-	background-image: url(https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/domain.png);
+	background-image: url(images/website.png);
 }
 .facebook {
-	background-image: url(https://cdn0.iconfinder.com/data/icons/social-flat-rounded-rects/512/facebook-256.png);
+	background-image: url(images/facebook.png);
 }
 .google_places {
-	background-image: url(http://www.advergroup.com/images/BLOG_IMAGES/GOOGLE_MAPS_Icon.png);
+	background-image: url(images/googlePlaces.png);
 }
 .youtube {
-	background-image: url(http://findicons.com/files/icons/524/web_2/256/youtube.png);
+	background-image: url(images/youtube.png);
 }
 .yelp {
-	background-image: url(http://www.dhhomeinspection.com/wp-content/themes/dan-hicks/assets/images/review-icon-yelp.png);
+	background-image: url(images/yelp.png);
 }			
 .google_plus {
-	background-image: url(http://icons.iconarchive.com/icons/marcus-roberto/google-play/256/Google-plus-icon.png);
+	background-image: url(images/googlePlus.png);
 }						
 .flickr {
-	background-image: url(http://storage.ubertor.com/rodandrhea.myubertor.com/content/image/9954.png);
+	background-image: url(images/flickr.png);
 }
 .twitter {
-	background-image: url(http://icons.iconarchive.com/icons/limav/flat-gradient-social/256/Twitter-icon.png);
+	background-image: url(images/twitter.png);
 }
 .wix {
-	background-image: url(http://static.wixstatic.com/media/e9e449_0669f883fffe4119bd6e7e48519482a0.png);
+	background-image: url(images/wix.png);
 }
 .factual {
-	background-image: url(https://avatars0.githubusercontent.com/u/132986?v=3&s=200);
+	background-image: url(images/factual.png);
 }
 .instagram {
-	background-image: url(http://vignette1.wikia.nocookie.net/criminal-case-grimsborough/images/d/d6/Instagram_by_r4st3reyez-d7z5x9q.png/revision/latest?cb=20151204201032);
+	background-image: url(images/instagram.png);
 }
 .post {
-	background-image: url(https://www.facebook.com/images/icons/post.gif);
+	background-image: url(images/post.gif);
 }
 .search {
-	background-image: url(https://cdn1.iconfinder.com/data/icons/education-set-01/512/search-text-512.png);
+	background-image: url(images/search.png);
 }
 .close {
-	background-image: url(http://www.iconsdb.com/icons/preview/green/close-window-xxl.png);
+	background-image: url(images/close.png);
 	border: 1px solid #fff;
 	border-radius: 12px;
 	background-color: #fff;
 	cursor: pointer;
 }
 .request, .response {
-	background-image: url(https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-help-circled-128.png);
+	background-image: url(images/info.png);
 	cursor: pointer;
 }
 .box {
@@ -260,7 +260,7 @@ span.icon {
 	position: relative;
 }
 .loading {
-	background-image: url(http://i.stack.imgur.com/MnyxU.gif);
+	background-image: url(images/loader.gif);
 	background-size: 30px 30px;
 	background-position: center center;
 	background-repeat: no-repeat;	

@@ -26,7 +26,7 @@ $(document).ready(function(){
 		$('.navigation').empty();					
 		$('#content').empty();					
 		getPlatforms(data);					
-		getName(data);					
+		getBusinessName(data);
 		getCategory(data);				
 		getRadius(data);
 		displayRequestData(data);		
@@ -332,7 +332,7 @@ getServer = function() {
 	return $('#server').val();
 }
 
-getName = function(data) {				
+getBusinessName = function(data) {
 	data.searchParams.name = $('#term').val();
 }
 

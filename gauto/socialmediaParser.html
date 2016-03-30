@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Social Media Search</title>
+		<title>WIxWiz- Social Media Search</title>
 		<link rel="stylesheet" href="styles.css">
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-		<link href="jquery.json-viewer.css" type="text/css" rel="stylesheet" />
+		<link href="json-viewer/jquery.json-viewer.css" type="text/css" rel="stylesheet" />
 	</head>
 	<body>		
 		<div id="container">
@@ -24,7 +24,7 @@
 							<div class="mapContainer">
 								<!-------------------------->
 								<div id="floating-panel">
-									<input type="text" id="term" placeholder="Enter business name" />
+									<input type="text" id="businessName" placeholder="Enter business name" />
 									<input id="address" type="textbox" placeholder="Enter location" value="" />
 									<input type="text" class="shortInput" id="radius" placeholder="Enter Radius (m)" value="" />
 									<input id="submit" type="button" value="Geocode" />
@@ -88,7 +88,9 @@
 		<!-- script type="text/javascript" src="http://static.wix.com/services/third-party/lodash/2.4.1/dist/lodash.min"></script -->
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
 		<script type="text/javascript" src="script.js"></script>
+		<script type="text/javascript" src="socialMeadiaSearch.js"></script>
+		<script type="text/javascript" src="urlSearch.js"></script>
 		<script type="text/javascript" src="googleMapScript.js"></script>
-		<script src="jquery.json-viewer.js"></script>
+		<script src="json-viewer/jquery.json-viewer.js"></script>
 	</body>
 </html>
