@@ -45,7 +45,7 @@ $(document).ready(function(){
 
 searchByUrls = function(urls) {
 	event.preventDefault();
-	$('#platformResults .box').empty();
+	$('#platformResults').find('.box').empty();
 
 	var data = {
 		'urls': urls,
@@ -82,7 +82,7 @@ parseUnifiedGeneralInfo = function(generalInfo) {
 
 	generalInfo.logo ? content += '<li>Logo [' + generalInfo.logo.source + ']: <img src="' + generalInfo.logo.value + '"/>' + '</li>' : '';
 	generalInfo.cover_photo ? content += '<li>Cover Photo [' + generalInfo.cover_photo.source + ']: <img src="' + generalInfo.cover_photo.value + '"/>' + '</li>' : '';
-	content += '<ul>';
+	content += '</ul>';
 
 	return content;
 };
@@ -96,7 +96,7 @@ parseGeneralInfo = function(generalInfo) {
 	generalInfo.long_description ? content += '<li>Long Description: <samp>' + generalInfo.long_description + '</samp></li>' : '';
 	generalInfo.logo ? content += '<li>Logo: <img src="' + generalInfo.logo + '"/>' + '</li>' : '';
 	generalInfo.cover_photo ? content += '<li>Cover Photo: <img src="' + generalInfo.cover_photo + '"/>' + '</li>' : '';
-	content += '<ul>';
+	content += '</ul>';
 
 	return content;
 };
@@ -108,7 +108,7 @@ parseUnifiedContactDetails = function(contactDetails) {
 	contactDetails.email ? content += '<li>Email ['+ contactDetails.email.source + ']: <samp>' + contactDetails.email.value + '</samp></li>' : '';
 	contactDetails.website ? content += '<li>Website [' + contactDetails.website.source + ']: <samp><a href="' + contactDetails.website.value + '" target="_blank">' + contactDetails.website.value + '</a></samp></li>' : '';
 	contactDetails.open_hours ? content += '<li>Open hours [' + contactDetails.open_hours.source + ']: <samp>' + parseOpenHours(contactDetails.open_hours.value.days) + '</samp></li>' : '';
-	content += '<ul>';
+	content += '</ul>';
 
 	return content;
 };
@@ -140,7 +140,7 @@ parseContactDetails = function(contactDetails) {
 	contactDetails.email ? content += '<li>Email: <samp>' + contactDetails.email + '</samp></li>' : '';
 	contactDetails.website ? content += '<li>Website: <samp><a href="' + contactDetails.website +'" target="_blank">' + contactDetails.website + '</a></samp></li>' : '';
 	contactDetails.open_hours ? content += '<li>Open hours: <samp>' + parseOpenHours(contactDetails.open_hours.days) + '</samp></li>' : '';
-	content += '<ul>';
+	content += '</ul>';
 
 	return content;
 };
@@ -154,7 +154,7 @@ parseWebsite = function(website) {
 	_(website.photos).forEach(function(n) {
 		content += '<li><img src="' + n.photo_url + '" /></li>';
 	});
-	content += '<ul>';
+	content += '</ul>';
 
 	return content;
 };
@@ -166,7 +166,7 @@ parseUnifiedFeeds = function(feeds){
 		var time = new Date(n.created_time);
 		content += '<li class="item"><span class="icon post"></span> Created: <samp>' + time + '</samp><br /> From: <samp>' + n.from + '</samp><br /> Name: <samp>' + n.name + '</samp><br /> Description: <samp>' + n.description + '</samp><br /> Message: <samp>' + n.message + '</samp><br /><img src="' + n.picture + '"/></li>';
 	});
-	content += '<ul>';
+	content += '</ul>';
 
 	return content;
 };
@@ -189,7 +189,7 @@ parseUnifiedReviews = function(reviews){
 		var time = new Date(n.time);
 		content += '<li class="item">Text: <samp>' + n.text + '</samp><br />Created: <samp>' + time + '</samp><br /> Author: <samp>' + n.author_name + '</samp>' + (n.author_photo ? '<img src="https:' + n.author_photo + '" />' : '') + '</li>';
 	});
-	content += '<ul>';
+	content += '</ul>';
 
 	return content;
 };
@@ -200,7 +200,7 @@ parseReviews = function(reviews){
 		var time = new Date(n.time);
 		content += '<li class="item">Text: <samp>' + n.text + '</samp><br />Created: <samp>' + time + '</samp><br /> Author: <samp>' + n.author_name + '</samp>' + (n.author_photo ? '<img src="https:' + n.author_photo + '" />' : '') + '</li>';
 	});
-	content += '<ul>';
+	content += '</ul>';
 
 	return content;
 };
@@ -265,7 +265,8 @@ parseUnifiedVideos = function(videos){
 
 parsePlatformData = function(answer) {
 	var content = '',
-		emptyCell = '<td></td></tr>';
+		emptyCell = '<td></td></tr>',
+		box = $('#platformResults').find('.box');
 
 	_.forEach(answer.platforms, function(i) {
 		content += '<table class="details">';
@@ -300,12 +301,12 @@ parsePlatformData = function(answer) {
 			i.photos_albums ? content += '<td>' + (i.platform_name === 'facebook_onboarding' ? parseFacebookPhotos(i.photos_albums) : parsePhotos(_.first(i.photos_albums))) + '</td></tr>' : content += emptyCell;
 		}
 
-		content += '<table>';
+		content += '</table>';
 	});
 
-	$('#platformResults .box').html(content);
-	$('#platformResults .loading').hide();
-	$('#platformResults .box').show();
+	$('.loading').hide();
+	box.html(content);
+	box.show();
 
 	displayResultData(answer);
 	imagePreview();
@@ -332,9 +333,9 @@ imagePreview = function(){
 initForm = function(data) {
 	$('input[name=search]:checked').val() === 'gauto' ? initAutoMap(data) : initRadiusMap(data);
 
-	$('#searchOptions input').on('change', function() {
+	$('#searchOptions').find('input').on('change', function() {
 		var value = $('input[name=search]:checked').val(),
-				legend= $('#searchFields legend');
+			legend= $('#searchFields').find('legend');
 
 		if (value === 'gauto') {
 			legend.html('Search by Business Name and Location (Google autocomplete)');
@@ -549,14 +550,16 @@ organizeMergedResults = function(mergedResults) {
 };
 
 parseResults = function(results) {
+	var defaultImage = 'http://static.wixstatic.com/media/e9e449_0669f883fffe4119bd6e7e48519482a0.png',
+		output = '',
+		unifiedResult = $('#unifiedResult'),
+		resultsBox = $('#results');
+
 	if (_.size(results) === 2) {
 		$('<h3>There are no results to display...</h3>').appendTo('#content');
-		$('#results').show();
+		resultsBox.show();
 		return;
 	}
-
-	var defaultImage = 'http://static.wixstatic.com/media/e9e449_0669f883fffe4119bd6e7e48519482a0.png';
-	var output = '';
 
 	if (results.unified_search) {
 		$('<li class="icon wix" id="unified"><span class="number">' + _.size(results.unified_search) + '</span> Unified results</li>').appendTo('.navigation');
@@ -715,9 +718,10 @@ parseResults = function(results) {
 	$(output).appendTo('#content');
 
 	$('.search').on('click', function(e) {
-		$('#platformResults').css('top', e.pageY);
-		$('#platformResults').show();
-		$('#platformResults .loading').show();
+		var platformResult = $('#platformResults');
+		platformResult.css('top', e.pageY);
+		platformResult.show();
+		$('#platformResults').find('.loading').show();
 		searchByUrls(($(this).siblings('.platformUrls').html()).split(','));
 	});
 
@@ -740,29 +744,31 @@ parseResults = function(results) {
 		navigateResults(this);
 	});
 
-	$('#unifiedResult .platforms').on('click',function() {
+	unifiedResult.find('.platforms').on('click',function() {
 		$(this).siblings('.modal').toggle();
 	});
 
-	$('#unifiedResult').show();
-	$('#results').show();
-	$('#content div:first-child').show();
+	unifiedResult.show();
+	resultsBox.show();
+	$('#content').find('div:first-child').show();
 };
 
 navigateResults = function(element) {
 	$('.navigation li').removeClass('selected');
 	$(element).addClass('selected');
 
-	$('#content div').hide();
+	$('#content').find('div').hide();
 	$('#' + $(element).attr('id') + 'Result').show();
 };
 
 getPlatforms = function(data) {
-	var platformsArray = [];
-	if($('#mediaBox input[name=all]:checked').val() === 'all') {
+	var platformsArray = [],
+		mediaBox = $('#mediaBox');
+
+	if (mediaBox.find('input[name=all]:checked').val() === 'all') {
 		platformsArray = ['yelp', 'facebook', 'google_places', 'factual'];
 	} else {
-		$('#mediaBox input[type=checkbox]').each(function () {
+		mediaBox.find('input[type=checkbox]').each(function () {
 			this.checked ? platformsArray.push($(this).val()) : '';
 		});
 	}
