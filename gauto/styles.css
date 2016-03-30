@@ -63,6 +63,7 @@ table, th, td {
 th, td {
 	padding: 4px;
 	line-height: 20px;
+	vertical-align: top;
 }
 caption {
 	color: #2F4F4F;
@@ -384,8 +385,13 @@ td.urlCol a {
 	float: left;
 	margin-right: 20px;
 }
-.videos li.item, .reviews li.item {
-	list-style-type: circle;
-	list-style-position: inside;
-	margin: 10px 0;
+.videos li.item, .reviews li.item, .feeds li.item, .events li.item {
+	border-bottom: 1px solid rgba(47, 79, 79, 0.3);
+	margin: 10px 0; padding: 10px 0;
+}
+.videos li.item:last-child, .reviews li.item:last-child, .feeds li.item:last-child, .events li.item:last-child {
+	border-bottom: 0 solid rgba(47, 79, 79, 0.3);
+}
+.reviews img {
+	margin: 0 10px;
 }

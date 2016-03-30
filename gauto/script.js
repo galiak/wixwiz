@@ -164,7 +164,7 @@ parseUnifiedFeeds = function(feeds){
 	content += '<ul class="feeds">';
 	_(feeds.value).forEach(function(n) {
 		var time = new Date(n.created_time);
-		content += '<li><span class="icon post"></span> Created: ' + time + '<br /> From: ' + n.from + '<br /> Name: ' + n.name + '<br /> Description: ' + n.description + '<br /> Message: ' + n.message + '<br /><img src="' + n.picture + '"/></li>';
+		content += '<li class="item"><span class="icon post"></span> Created: <samp>' + time + '</samp><br /> From: <samp>' + n.from + '</samp><br /> Name: <samp>' + n.name + '</samp><br /> Description: <samp>' + n.description + '</samp><br /> Message: <samp>' + n.message + '</samp><br /><img src="' + n.picture + '"/></li>';
 	});
 	content += '<ul>';
 
@@ -175,7 +175,7 @@ parseUnifiedEvents = function(events){
 	var content = '<h4>' + events.source + ': </h4>';
 	content += '<ul class="events">';
 	_(events.value).forEach(function(n) {
-		content += '<li>Name: ' + n.name + '<br /> Start Time: ' + n.start_time + '<br /> + Description: ' + n.description + '<br /><img src="' + n.image_url + '"/></li>';
+		content += '<li class="item">Name: <samp>' + n.name + '</samp><br /> Start Time: <samp>' + n.start_time + '</samp><br /> + Description: <samp>' + n.description + '</samp><br /><img src="' + n.image_url + '"/></li>';
 	});
 	content += '</ul>';
 
@@ -187,7 +187,7 @@ parseUnifiedReviews = function(reviews){
 	content += '<ul class="reviews">';
 	_(reviews.value).forEach(function(n) {
 		var time = new Date(n.time);
-		content += '<li class="item">Text: ' + n.text + '<br />Created: ' + time + '<br /> Author: ' + n.author_name + (n.author_photo ? '<img src="https:' + n.author_photo + '" />' : '') + '</li>';
+		content += '<li class="item">Text: <samp>' + n.text + '</samp><br />Created: <samp>' + time + '</samp><br /> Author: <samp>' + n.author_name + '</samp>' + (n.author_photo ? '<img src="https:' + n.author_photo + '" />' : '') + '</li>';
 	});
 	content += '<ul>';
 
@@ -198,7 +198,7 @@ parseReviews = function(reviews){
 	var content = '<ul class="reviews">';
 	_(reviews).forEach(function(n) {
 		var time = new Date(n.time);
-		content += '<li class="item">Text: ' + n.text + '<br />Created: ' + time + '<br /> Author: ' + n.author_name + (n.author_photo ? '<img src="https:' + n.author_photo + '" />' : '') + '</li>';
+		content += '<li class="item">Text: <samp>' + n.text + '</samp><br />Created: <samp>' + time + '</samp><br /> Author: <samp>' + n.author_name + '</samp>' + (n.author_photo ? '<img src="https:' + n.author_photo + '" />' : '') + '</li>';
 	});
 	content += '<ul>';
 
@@ -255,7 +255,7 @@ parseUnifiedVideos = function(videos){
 		content += '<ul class="videos">';
 		content += '<li>' + n.description + '</li>';
 		_(n.videos).forEach(function(i) {
-			content += '<li class="item">' + i.description + ' <a target="_blank" href="' + i.url + '">' + i.url + '</a></li>';
+			content += '<li class="item"><samp>' + i.description + ' <a target="_blank" href="' + i.url + '">' + i.url + '</a></samp></li>';
 		});
 		content += '</ul>';
 	});
