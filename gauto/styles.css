@@ -394,3 +394,6 @@ td.urlCol a {
 .reviews img {
 	margin: 0 10px;
 }
+#filter {
+	clear: left;
+}
