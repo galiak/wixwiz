@@ -76,6 +76,9 @@ parseUnifiedGeneralInfo = function(generalInfo) {
 	generalInfo.members ? content += '<li>Members [' + generalInfo.members.source + ']: <samp>' + generalInfo.members.value + '</samp></li>' : '';
 	generalInfo.public_transit ? content += '<li>Public Transit [' + generalInfo.public_transit.source + ']: <samp>' + generalInfo.public_transit.value + '</samp></li>' : '';
 	generalInfo.start_info ? content += '<li>Start Info [' + generalInfo.start_info.source + ']: <samp>' + generalInfo.start_info.value.type + ' ' + (generalInfo.start_info.value.date ? generalInfo.start_info.value.date.year : 'Unspecified') + '</samp></li>' : '';
+	generalInfo.bio ? content += '<li>Bio [' + generalInfo.bio.source + ']: <samp>' + generalInfo.bio.value.type + ' ' + generalInfo.bio.value + '</samp></li>' : '';
+	generalInfo.parking ? content += '<li>Parking [' + generalInfo.parking.source + ']: <samp>Lot: ' + generalInfo.parking.value.lot + ' / Street: ' + generalInfo.parking.value.street + ' / Valet: ' + generalInfo.parking.value.valet + '</samp></li>' : '';
+	generalInfo.price_range ? content += '<li>Price Range [' + generalInfo.price_range.source + ']: <samp>' + generalInfo.price_range.value + '</samp></li>' : '';
 
 	generalInfo.logo ? content += '<li>Logo [' + generalInfo.logo.source + ']: <img src="' + generalInfo.logo.value + '"/>' + '</li>' : '';
 	generalInfo.cover_photo ? content += '<li>Cover Photo [' + generalInfo.cover_photo.source + ']: <img src="' + generalInfo.cover_photo.value + '"/>' + '</li>' : '';
@@ -172,9 +175,9 @@ parseUnifiedEvents = function(events){
 	var content = '<h4>' + events.source + ': </h4>';
 	content += '<ul class="events">';
 	_(events.value).forEach(function(n) {
-		content += '<li>Name: ' + n.name + '<br /> Description: ' + n.description + '<br /><img src="' + n.image_url + '"/></li>';
+		content += '<li>Name: ' + n.name + '<br /> Start Time: ' + n.start_time + '<br /> + Description: ' + n.description + '<br /><img src="' + n.image_url + '"/></li>';
 	});
-	content += '<ul>';
+	content += '</ul>';
 
 	return content;
 };
