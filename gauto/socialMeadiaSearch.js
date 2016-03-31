@@ -1,7 +1,6 @@
 parseResults = function(results) {
     var defaultImage = 'http://static.wixstatic.com/media/e9e449_0669f883fffe4119bd6e7e48519482a0.png',
         output = '',
-        unifiedResult = $('#unifiedResult'),
         resultsBox = $('#results');
 
     if (_.size(results) === 2) {
@@ -193,6 +192,7 @@ parseResults = function(results) {
         navigateResults(this);
     });
 
+    var unifiedResult = $('#unifiedResult');
     unifiedResult.find('.platforms').on('click',function() {
         $(this).siblings('.modal').toggle();
     });
