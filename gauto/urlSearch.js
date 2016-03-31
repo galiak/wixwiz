@@ -30,7 +30,7 @@ parsePlatformData = function(answer) {
             content += '<tr><th>General Info</th>';
             content += '<td>' + parseGeneralInfo(i.general_info) + '</td></tr>';
             content += '<tr><th>Contact Details</th>';
-            content += '<td>' + parseContactDetails(i.contact_details) + '</td></tr>';
+            i.contact_details ? content += '<td>' + parseContactDetails(i.contact_details) + '</td></tr>' : content += emptyCell;
             content += '<tr><th>Reviews</th>';
             i.reviews ? content += '<td>' + parseReviews(i.reviews) + '</td></tr>' : content += emptyCell;
             content += '<tr><th>Photos</th>';
