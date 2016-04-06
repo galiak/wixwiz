@@ -236,13 +236,18 @@ parseUnifiedGeneralInfo = function(generalInfo) {
     generalInfo.parking ? content += '<li>Parking [' + generalInfo.parking.source + ']: <samp>Lot: ' + generalInfo.parking.value.lot + ' / Street: ' + generalInfo.parking.value.street + ' / Valet: ' + generalInfo.parking.value.valet + '</samp></li>' : '';
     generalInfo.price_range ? content += '<li>Price Range [' + generalInfo.price_range.source + ']: <samp>' + generalInfo.price_range.value + '</samp></li>' : '';
 
-    if (generalInfo.logo) {
-        content += '<li>Logo [' + generalInfo.logo.source + ']: <img src="' + generalInfo.logo.value + '"/>' + ' <ul id="logo" class="annotations"></ul></li>';
-        getImageAnnotation('logo', generalInfo.logo.value);
+    if (generalInfo.logos) {
+        _.forEach(generalInfo.logos, function(photo, i) {
+            content += '<li>Logo [' + photo.source + ']: <img src="' + photo.value + '"/>' + ' <ul id="logo' + i + '" class="annotations"></ul></li>';
+            getImageAnnotation('logo' + i, photo.value);
+        });
+
     }
-    if (generalInfo.cover_photo) {
-        content += '<li>Cover Photo [' + generalInfo.cover_photo.source + ']: <img src="' + generalInfo.cover_photo.value + '"/>' + ' <ul id="cover" class="annotations"></ul></li>';
-        getImageAnnotation('cover', generalInfo.cover_photo.value);
+    if (generalInfo.cover_photos) {
+        _.forEach(generalInfo.cover_photos, function(photo, i) {
+            content += '<li>Cover Photo [' + photo.source + ']: <img src="' + photo.value + '"/>' + ' <ul id="cover' + i + '" class="annotations"></ul></li>';
+            getImageAnnotation('cover' + i, photo.value);
+        });
     }
 
     content += '</ul>';
