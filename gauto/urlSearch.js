@@ -237,21 +237,24 @@ parseUnifiedGeneralInfo = function(generalInfo) {
     generalInfo.price_range ? content += '<li>Price Range [' + generalInfo.price_range.source + ']: <samp>' + generalInfo.price_range.value + '</samp></li>' : '';
 
     if (generalInfo.logos) {
-        _.forEach(generalInfo.logos, function(photo, i) {
-            content += '<li>Logo [' + photo.source + ']: <img src="' + photo.value + '"/>' + ' <ul id="logo' + i + '" class="annotations"></ul></li>';
-            getImageAnnotation('logo' + i, photo.value);
-        });
-
+        content += parseImages(generalInfo.logos, 'logo');
     }
     if (generalInfo.cover_photos) {
-        _.forEach(generalInfo.cover_photos, function(photo, i) {
-            content += '<li>Cover Photo [' + photo.source + ']: <img src="' + photo.value + '"/>' + ' <ul id="cover' + i + '" class="annotations"></ul></li>';
-            getImageAnnotation('cover' + i, photo.value);
-        });
+        content += parseImages(generalInfo.cover_photos, 'cover');
     }
 
     content += '</ul>';
 
+    return content;
+};
+
+parseImages = function(photos, type) {
+    var content = '';
+
+    _.forEach(photos, function(photo, i) {
+        content += '<li>' + type + ' [' + photo.source + ']: <img src="' + photo.value + '"/>' + ' <ul id="' + type + i + '" class="annotations"></ul></li>';
+        getImageAnnotation(type + i, photo.value);
+    });
     return content;
 };
 
