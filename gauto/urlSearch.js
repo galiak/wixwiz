@@ -236,11 +236,14 @@ parseUnifiedGeneralInfo = function(generalInfo) {
     generalInfo.parking ? content += '<li>Parking [' + generalInfo.parking.source + ']: <samp>Lot: ' + generalInfo.parking.value.lot + ' / Street: ' + generalInfo.parking.value.street + ' / Valet: ' + generalInfo.parking.value.valet + '</samp></li>' : '';
     generalInfo.price_range ? content += '<li>Price Range [' + generalInfo.price_range.source + ']: <samp>' + generalInfo.price_range.value + '</samp></li>' : '';
 
-    if(generalInfo.logo) {
-        content += '<li>Logo [' + generalInfo.logo.source + ']: <img src="' + generalInfo.logo.value + '"/>' + ' <samp class="annotation"></samp></li>';
-        getImageAnnotation(generalInfo.logo.value);
+    if (generalInfo.logo) {
+        content += '<li>Logo [' + generalInfo.logo.source + ']: <img src="' + generalInfo.logo.value + '"/>' + ' <ul id="logo" class="annotations"></ul></li>';
+        getImageAnnotation('logo', generalInfo.logo.value);
     }
-    generalInfo.cover_photo ? content += '<li>Cover Photo [' + generalInfo.cover_photo.source + ']: <img src="' + generalInfo.cover_photo.value + '"/>' + '</li>' : '';
+    if (generalInfo.cover_photo) {
+        content += '<li>Cover Photo [' + generalInfo.cover_photo.source + ']: <img src="' + generalInfo.cover_photo.value + '"/>' + ' <ul id="cover" class="annotations"></ul></li>';
+        getImageAnnotation('cover', generalInfo.cover_photo.value);
+    }
 
     content += '</ul>';
 
