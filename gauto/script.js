@@ -26,8 +26,10 @@ searchSocialMedia = function(data) {
 		event.preventDefault();
 		$('.navigation').empty();
 		$('#content').empty();
+
 		getPlatforms(data);
 		shouldAddFilter(data);
+
 		if ($('input[name=search]:checked').val() === 'glocation') {
 			getBusinessName(data);
 			getRadius(data);
@@ -41,8 +43,9 @@ searchSocialMedia = function(data) {
 			data: JSON.stringify(data),
 			contentType: 'application/json; charset=utf-8',
 			dataType: 'json',
-			success: function(data){
-				parseResults(data); $('.loading').hide();
+			success: function(response){
+				parseResults(response);
+				$('.loading').hide();
 			}
 		});
 	});
@@ -62,8 +65,8 @@ searchByUrls = function(urls) {
 		data: JSON.stringify(data),
 		contentType: 'application/json; charset=utf-8',
 		dataType: 'json',
-		success: function(data){
-			parsePlatformData(data)
+		success: function(response){
+			parsePlatformData(response)
 		}
 	});
 };
