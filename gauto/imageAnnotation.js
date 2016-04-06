@@ -6,6 +6,10 @@ getImageAnnotation = function(imageUrl) {
         {
             'type': 'LABEL_DETECTION',
             'maxResults': 10
+        },
+        {
+            'type': 'TEXT_DETECTION',
+            'maxResults': 10
         }
     ]};
 
@@ -16,22 +20,25 @@ getImageAnnotation = function(imageUrl) {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         success: function(response){
-            return parseLabelAnnotations(response)
+            parseAnnotations(response)
         }
     });
 };
 
-parseLabelAnnotations = function(annotations) {
-    var content = '';
+parseAnnotations = function(annotations) {
+    var content = '<ul class="annotations">';
 
-    _.forEach(annotations.responses, function(annotation) {
-        content += _.keys(annotation)[0] + ': ';
-
-        _.forEach(annotation, function(i) {
-            _.forEach(i, function(n) {
-                content += n.description + ' (' + Math.round(n.score * 100) + '%); ';
+    _.forEach(annotations.responses, function(response) {
+        _.forEach(response, function(annotation, i) {
+            content += '<li>* ' + i + ': ';
+            _.forEach(annotation, function(n) {
+                content += n.description + (n.score ? ' (' + Math.round(n.score * 100) + '%); ' : '; ');
             });
+            content += ' *</li>';
         });
     });
+    content += '</ul>';
+
     $('.annotation').html(content);
 };
+
