@@ -109,10 +109,10 @@ parseUnifiedResults = function(results) {
         content += '<div class="platformUrls">' + j.urls + '</div>';
         content += '</dt>';
 
-        j.category ? (content += '<dd>' + j.category + '</dd>') : output += EMPTY_STRING;
-        j.website ? (content += '<dd class="icon website">' + '<a target="_blank" href="' + j.website + '">' + j.website + '</a></dd>') : output += EMPTY_STRING;
-        j.phone ? (content += '<dd class="icon phone">' + j.phone + '</dd>') : output += EMPTY_STRING;
-        j.address ? (content += '<dd class="icon location">' + j.address.full_addr + '</dd>') : output += EMPTY_STRING;
+        j.category ? (content += '<dd>' + j.category + '</dd>') : content += EMPTY_STRING;
+        j.website ? (content += '<dd class="icon website">' + '<a target="_blank" href="' + j.website + '">' + j.website + '</a></dd>') : content += EMPTY_STRING;
+        j.phone ? (content += '<dd class="icon phone">' + j.phone + '</dd>') : content += EMPTY_STRING;
+        j.address ? (content += '<dd class="icon location">' + j.address.full_addr + '</dd>') : content += EMPTY_STRING;
         content += '</dl>';
     });
     content += '</div>';
@@ -145,7 +145,7 @@ parseFactualResults = function(results) {
         content += '<dt>' + j.text + '</dt>';
         content += '<dd>' + j.category + '</dd>';
         content += '<dd class="icon web">' + '<a target="_blank" href="' + j.url + '">' + j.url + '</a></dd>';
-        j.website ? (content += '<dd class="icon website">' + '<a target="_blank" href="' + j.website + '">' + j.website + '</a></dd>') : output += EMPTY_STRING;
+        j.website ? (content += '<dd class="icon website">' + '<a target="_blank" href="' + j.website + '">' + j.website + '</a></dd>') : content += EMPTY_STRING;
         content += '<dd class="icon email">' + '<a target="_blank" href="' + j.email + '">' + j.email + '</a></dd>';
         content += '<dd class="icon phone">' + j.phone + '</dd>';
         content += '<dd class="icon location">' + j.address.full_addr + '</dd>';
@@ -163,10 +163,10 @@ parseFacebookResults = function() {
         content += '<dl>';
         content += '<dt><img src="' + j.image + '" />' + j.text + '</dt>';
         content += '<dd>' + j.category + '</dd>';
-        j.website ? (content += '<dd class="icon website">' + '<a target="_blank" href="' + j.website + '">' + j.website + '</a></dd>') : output += EMPTY_STRING;
+        j.website ? (content += '<dd class="icon website">' + '<a target="_blank" href="' + j.website + '">' + j.website + '</a></dd>') : content += EMPTY_STRING;
         content += '<dd class="icon facebook">' + '<a target="_blank" href="' + j.url + '">' + j.url + '</a></dd>';
-        j.phone ? (content += '<dd class="icon phone">' + j.phone + '</dd>') : output += EMPTY_STRING;
-        j.address ? (content += '<dd class="icon location">' + j.address.full_addr + '</dd>') : output += EMPTY_STRING;
+        j.phone ? (content += '<dd class="icon phone">' + j.phone + '</dd>') : content += EMPTY_STRING;
+        j.address ? (content += '<dd class="icon location">' + j.address.full_addr + '</dd>') : content += EMPTY_STRING;
         content += '</dl>';
     });
     content += '</div>';
@@ -181,7 +181,7 @@ parseGooglePlacesResults = function(results) {
         content += '<dl>';
         content += '<dt><img src="' + j.image + '" />' + j.text + '</dt>';
         content += '<dd>' + j.category + '</dd>';
-        j.website ? (content += '<dd class="icon website">' + '<a target="_blank" href="' + j.website + '">' + j.website + '</a></dd>') : output += EMPTY_STRING;
+        j.website ? (content += '<dd class="icon website">' + '<a target="_blank" href="' + j.website + '">' + j.website + '</a></dd>') : content += EMPTY_STRING;
         content += '<dd class="icon google_places">' + '<a target="_blank" href="' + j.url + '">' + j.url + '</a></dd>';
         content += '<dd class="icon phone">' + j.phone + '</dd>';
         content += '<dd class="icon location">' + j.address.full_addr + '</dd>';
@@ -212,9 +212,9 @@ parseTwitterResults = function(results) {
     _.forIn(results, function(j) {
         content += '<dl>';
         content += '<dt><img src="' + j.image + '" />' + j.text + '</dt>';
-        j.category ? (content += '<dd>' + j.category + '</dd>') : output += EMPTY_STRING;
+        j.category ? (content += '<dd>' + j.category + '</dd>') : content += EMPTY_STRING;
         content += '<dd class="icon twitter">' + '<a target="_blank" href="' + j.url + '">' + j.url + '</a></dd>';
-        j.address ? (content += '<dd class="icon location">' + j.address.full_addr + '</dd>') : output += EMPTY_STRING;
+        j.address ? (content += '<dd class="icon location">' + j.address.full_addr + '</dd>') : content += EMPTY_STRING;
         content += '</dl>';
     });
     content += '</div>';
@@ -236,11 +236,12 @@ parseYoutubeResults = function(results) {
 };
 
 parseFlickrResults = function (results) {
-    var content = '<div id="flickrResult">';
+    var defaultImage = 'images/flickr.png',
+        content = '<div id="flickrResult">';
 
     _.forIn(results, function(j) {
         content += '<dl>';
-        content += '<dt><img src="images/flickr.png" />' + j.text + '</dt>';
+        content += '<dt><img src="' + defaultImage + '" />' + j.text + '</dt>';
         content += '<dd class="icon web">' + '<a target="_blank" href="' + j.url + '">' + j.url + '</a></dd>';
         content += '</dl>';
     });
@@ -273,7 +274,8 @@ dispalyPlatformIcons = function(mergedResults) {
 };
 
 organizeMergedResults = function(mergedResults) {
-    var content = '<table>';
+    var emptyCell = '<td>--/--</td>',
+        content = '<table>';
 
     content += '<tr><th>Platform</th><th>Name</th><th>Category</th><th>Address</th><th>Phone</th><th>Url</th><th>Website</th><th>Image</th></tr>';
     _.forEach(mergedResults, function(i) {
@@ -282,10 +284,10 @@ organizeMergedResults = function(mergedResults) {
         content += '<th class="platformCell"><span class="icon ' + i.platform_name + '"></span></th>';
         content += '<td>' + i.text + '</td>';
         content += '<td>' + i.category + '</td>';
-        content += i.address ? ('<td>' + i.address.full_addr + '</td>') : '<td>--/--</td>';
+        content += i.address ? ('<td>' + i.address.full_addr + '</td>') : emptyCell;
         content += '<td class="phoneCell">' + i.phone + '</td>';
         content += '<td class="urlCol">' + '<a target="_blank" href="' + i.url + '">' + i.url + '</a>' + '</td>';
-        content += i.website ? ('<td>' + '<a target="_blank" href="' + i.website + '">' + i.website + '</a>' + '</td>') : '<td>--/--</td>';
+        content += i.website ? ('<td>' + '<a target="_blank" href="' + i.website + '">' + i.website + '</a>' + '</td>') : emptyCell;
         content += '<td>' + '<img src="' + i.image + '" />' + '</td>';
         content +=	'</tr>';
     });
