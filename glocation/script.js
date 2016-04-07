@@ -104,7 +104,7 @@ geocodeAddress = function(geocoder, resultsMap, data) {
 	});
 }
 
-unifiedPlatforms = function(mergedResults) {				
+dispalyPlatformIcons = function(mergedResults) {
 	var platforms = '';
 	
 	_(mergedResults).forEach(function(n) { 
@@ -151,7 +151,7 @@ parseResults = function(results) {
 			
 			output += '<dt>';
 			output += '<img src="' + (j.image ? j.image : defaultImage) + '" />';
-			output += j.text + unifiedPlatforms(j.merged_results);
+			output += j.text + dispalyPlatformIcons(j.merged_results);
 			output += '<div class="modal">' + organizeMergedResults(j.merged_results) + '</div>';			
 			output += '</dt>';							
 			

@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2dd4727b-8d77-4dc6-be96-5e4f135cf20d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gauto/urlSearch.js" afterPath="$PROJECT_DIR$/gauto/urlSearch.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gauto/socialMeadiaSearch.js" afterPath="$PROJECT_DIR$/gauto/socialMeadiaSearch.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/glocation/script.js" afterPath="$PROJECT_DIR$/glocation/script.js" />
     </list>
     <ignored path="wixwiz.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,24 +54,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="socialMeadiaSearch.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="socialMeadiaSearch.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/gauto/socialMeadiaSearch.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.344828">
-              <caret line="30" column="11" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
+            <state vertical-scroll-proportion="0.54554456">
+              <caret line="244" column="27" selection-start-line="244" selection-start-column="27" selection-end-line="244" selection-end-column="27" />
               <folding>
-                <element signature="e#9412#9493#0" expanded="false" />
-                <element signature="e#9539#9777#0" expanded="false" />
+                <element signature="e#2083#2342#0" expanded="false" />
+                <element signature="e#2385#2430#0" expanded="false" />
+                <element signature="e#2470#2544#0" expanded="false" />
+                <element signature="e#2654#2692#0" expanded="false" />
+                <element signature="e#2800#2852#0" expanded="false" />
+                <element signature="e#9813#9894#0" expanded="false" />
+                <element signature="e#9944#10182#0" expanded="false" />
+                <element signature="e#10233#11249#0" expanded="false" />
+                <element signature="e#11288#11470#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urlSearch.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="urlSearch.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gauto/urlSearch.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.05742574">
-              <caret line="317" column="2" selection-start-line="317" selection-start-column="2" selection-end-line="317" selection-end-column="2" />
+            <state vertical-scroll-proportion="-1.7586207">
+              <caret line="3" column="22" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="22" />
               <folding>
                 <element signature="e#1861#3495#0" expanded="false" />
                 <element signature="e#3523#3919#0" expanded="false" />
@@ -132,13 +140,13 @@
         <option value="$PROJECT_DIR$/gauto/googleMap.js" />
         <option value="$PROJECT_DIR$/gauto/googleMapScript.js" />
         <option value="$PROJECT_DIR$/gauto/styles.css" />
-        <option value="$PROJECT_DIR$/gauto/socialMeadiaSearch.js" />
         <option value="$PROJECT_DIR$/gauto/base64files/photo1.json" />
         <option value="$PROJECT_DIR$/gauto/visionApiTest.js" />
         <option value="$PROJECT_DIR$/gauto/socialmediaParser.html" />
         <option value="$PROJECT_DIR$/gauto/script.js" />
         <option value="$PROJECT_DIR$/gauto/imageAnnotation.js" />
         <option value="$PROJECT_DIR$/gauto/urlSearch.js" />
+        <option value="$PROJECT_DIR$/gauto/socialMeadiaSearch.js" />
       </list>
     </option>
   </component>
@@ -209,6 +217,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="gauto" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wixwiz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wixwiz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gauto" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -347,7 +373,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="12" />
+      <option name="time" value="13" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -389,8 +415,15 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="195" column="28" selection-start-line="195" selection-start-column="28" selection-end-line="195" selection-end-column="28" />
           <folding>
-            <element signature="e#9412#9493#0" expanded="false" />
-            <element signature="e#9539#9777#0" expanded="false" />
+            <element signature="e#2083#2342#0" expanded="false" />
+            <element signature="e#2385#2430#0" expanded="false" />
+            <element signature="e#2470#2544#0" expanded="false" />
+            <element signature="e#2654#2692#0" expanded="false" />
+            <element signature="e#2800#2852#0" expanded="false" />
+            <element signature="e#9813#9894#0" expanded="false" />
+            <element signature="e#9944#10182#0" expanded="false" />
+            <element signature="e#10233#11249#0" expanded="false" />
+            <element signature="e#11288#11470#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -477,6 +510,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.62092793">
           <caret line="37" column="26" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -527,17 +561,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gauto/socialMeadiaSearch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.344828">
-          <caret line="30" column="11" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
-          <folding>
-            <element signature="e#9412#9493#0" expanded="false" />
-            <element signature="e#9539#9777#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.016361887">
@@ -564,8 +587,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/gauto/urlSearch.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.05742574">
-          <caret line="317" column="2" selection-start-line="317" selection-start-column="2" selection-end-line="317" selection-end-column="2" />
+        <state vertical-scroll-proportion="-1.7586207">
+          <caret line="3" column="22" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="22" />
           <folding>
             <element signature="e#1861#3495#0" expanded="false" />
             <element signature="e#3523#3919#0" expanded="false" />
@@ -581,6 +604,24 @@
             <element signature="e#9000#9343#0" expanded="false" />
             <element signature="e#9383#9896#0" expanded="false" />
             <element signature="e#9947#13088#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gauto/socialMeadiaSearch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.54554456">
+          <caret line="244" column="27" selection-start-line="244" selection-start-column="27" selection-end-line="244" selection-end-column="27" />
+          <folding>
+            <element signature="e#2083#2342#0" expanded="false" />
+            <element signature="e#2385#2430#0" expanded="false" />
+            <element signature="e#2470#2544#0" expanded="false" />
+            <element signature="e#2654#2692#0" expanded="false" />
+            <element signature="e#2800#2852#0" expanded="false" />
+            <element signature="e#9813#9894#0" expanded="false" />
+            <element signature="e#9944#10182#0" expanded="false" />
+            <element signature="e#10233#11249#0" expanded="false" />
+            <element signature="e#11288#11470#0" expanded="false" />
           </folding>
         </state>
       </provider>
