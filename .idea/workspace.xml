@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2dd4727b-8d77-4dc6-be96-5e4f135cf20d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gauto/googleMapScript.js" afterPath="$PROJECT_DIR$/gauto/googleMapScript.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gauto/imageAnnotation.js" afterPath="$PROJECT_DIR$/gauto/imageAnnotation.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gauto/script.js" afterPath="$PROJECT_DIR$/gauto/script.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gauto/urlSearch.js" afterPath="$PROJECT_DIR$/gauto/urlSearch.js" />
     </list>
     <ignored path="wixwiz.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="imageAnnotation.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="imageAnnotation.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gauto/imageAnnotation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.1308951">
-              <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -71,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urlSearch.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="urlSearch.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/gauto/urlSearch.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.7586207">
-              <caret line="3" column="22" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.46633664">
+              <caret line="174" column="40" selection-start-line="174" selection-start-column="40" selection-end-line="174" selection-end-column="40" />
               <folding>
                 <element signature="e#1861#3495#0" expanded="false" />
                 <element signature="e#3523#3919#0" expanded="false" />
@@ -83,14 +81,12 @@
                 <element signature="e#4299#5072#0" expanded="false" />
                 <element signature="e#5108#5499#0" expanded="false" />
                 <element signature="e#5537#6304#0" expanded="false" />
-                <element signature="e#6344#6893#0" expanded="false" />
-                <element signature="e#6935#7557#0" expanded="false" />
-                <element signature="e#7592#8156#0" expanded="false" />
-                <element signature="e#8197#8577#0" expanded="false" />
-                <element signature="e#8619#8961#0" expanded="false" />
-                <element signature="e#9000#9343#0" expanded="false" />
-                <element signature="e#9383#9896#0" expanded="false" />
-                <element signature="e#9947#13088#0" expanded="false" />
+                <element signature="e#7625#8189#0" expanded="false" />
+                <element signature="e#8230#8610#0" expanded="false" />
+                <element signature="e#8652#8994#0" expanded="false" />
+                <element signature="e#9033#9376#0" expanded="false" />
+                <element signature="e#9416#9929#0" expanded="false" />
+                <element signature="e#9980#13121#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -139,11 +135,11 @@
         <option value="$PROJECT_DIR$/gauto/base64files/photo1.json" />
         <option value="$PROJECT_DIR$/gauto/visionApiTest.js" />
         <option value="$PROJECT_DIR$/gauto/socialmediaParser.html" />
-        <option value="$PROJECT_DIR$/gauto/urlSearch.js" />
         <option value="$PROJECT_DIR$/gauto/socialMeadiaSearch.js" />
         <option value="$PROJECT_DIR$/gauto/script.js" />
         <option value="$PROJECT_DIR$/gauto/googleMapScript.js" />
         <option value="$PROJECT_DIR$/gauto/imageAnnotation.js" />
+        <option value="$PROJECT_DIR$/gauto/urlSearch.js" />
       </list>
     </option>
   </component>
@@ -432,14 +428,12 @@
             <element signature="e#4299#5072#0" expanded="false" />
             <element signature="e#5108#5499#0" expanded="false" />
             <element signature="e#5537#6304#0" expanded="false" />
-            <element signature="e#6344#6893#0" expanded="false" />
-            <element signature="e#6935#7557#0" expanded="false" />
-            <element signature="e#7592#8156#0" expanded="false" />
-            <element signature="e#8197#8577#0" expanded="false" />
-            <element signature="e#8619#8961#0" expanded="false" />
-            <element signature="e#9000#9343#0" expanded="false" />
-            <element signature="e#9383#9896#0" expanded="false" />
-            <element signature="e#9947#13088#0" expanded="false" />
+            <element signature="e#7625#8189#0" expanded="false" />
+            <element signature="e#8230#8610#0" expanded="false" />
+            <element signature="e#8652#8994#0" expanded="false" />
+            <element signature="e#9033#9376#0" expanded="false" />
+            <element signature="e#9416#9929#0" expanded="false" />
+            <element signature="e#9980#13121#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -554,29 +548,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gauto/urlSearch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.7586207">
-          <caret line="3" column="22" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="22" />
-          <folding>
-            <element signature="e#1861#3495#0" expanded="false" />
-            <element signature="e#3523#3919#0" expanded="false" />
-            <element signature="e#3957#4249#0" expanded="false" />
-            <element signature="e#4299#5072#0" expanded="false" />
-            <element signature="e#5108#5499#0" expanded="false" />
-            <element signature="e#5537#6304#0" expanded="false" />
-            <element signature="e#6344#6893#0" expanded="false" />
-            <element signature="e#6935#7557#0" expanded="false" />
-            <element signature="e#7592#8156#0" expanded="false" />
-            <element signature="e#8197#8577#0" expanded="false" />
-            <element signature="e#8619#8961#0" expanded="false" />
-            <element signature="e#9000#9343#0" expanded="false" />
-            <element signature="e#9383#9896#0" expanded="false" />
-            <element signature="e#9947#13088#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gauto/socialMeadiaSearch.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.965517">
@@ -609,9 +580,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/gauto/imageAnnotation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1308951">
-          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gauto/urlSearch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46633664">
+          <caret line="174" column="40" selection-start-line="174" selection-start-column="40" selection-end-line="174" selection-end-column="40" />
+          <folding>
+            <element signature="e#1861#3495#0" expanded="false" />
+            <element signature="e#3523#3919#0" expanded="false" />
+            <element signature="e#3957#4249#0" expanded="false" />
+            <element signature="e#4299#5072#0" expanded="false" />
+            <element signature="e#5108#5499#0" expanded="false" />
+            <element signature="e#5537#6304#0" expanded="false" />
+            <element signature="e#7625#8189#0" expanded="false" />
+            <element signature="e#8230#8610#0" expanded="false" />
+            <element signature="e#8652#8994#0" expanded="false" />
+            <element signature="e#9033#9376#0" expanded="false" />
+            <element signature="e#9416#9929#0" expanded="false" />
+            <element signature="e#9980#13121#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

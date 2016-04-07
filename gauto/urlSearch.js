@@ -164,7 +164,7 @@ parseUnifiedEvents = function(events){
         content += ' Name: <samp>' + event.name + '</samp><br />';
         content += ' Start Time: <samp>' + event.start_time + '</samp><br />';
         content += ' Description: <samp>' + event.description + '</samp><br />';
-        content += '<img src="' + event.image_url + '"/>';
+        content += event.image_url ? '<img src="' + event.image_url + '"/>' : EMPTY_STRING;
         content += '</li>';
     });
     content += '</ul>';
