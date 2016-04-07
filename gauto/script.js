@@ -1,16 +1,16 @@
 $(document).ready(function(){
 	var data = {
-		'platforms': [''],
-		'searchParams': {
-			'name': '',
-			'category': '',
-			'address':{
-				'geometry' : {
-					'location':{
-						'lat': -33.8688,
-						'lng': 151.2195
+		platforms: [''],
+		searchParams: {
+			name: '',
+			category: '',
+			address:{
+				geometry : {
+					location:{
+						lat: -33.8688,
+						lng: 151.2195
 					},
-					'radius': 0
+					radius: 0
 				}
 			}
 		}
@@ -56,8 +56,8 @@ searchByUrls = function(urls) {
 	$('#platformResults').find('.box').empty();
 
 	var data = {
-		'urls': urls,
-		'requestOrigin': 'onboarding'
+		urls: urls,
+		requestOrigin: 'onboarding'
 	};
 	$.ajax({
 		type: 'POST',

@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2dd4727b-8d77-4dc6-be96-5e4f135cf20d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gauto/socialMeadiaSearch.js" afterPath="$PROJECT_DIR$/gauto/socialMeadiaSearch.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gauto/googleMapScript.js" afterPath="$PROJECT_DIR$/gauto/googleMapScript.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gauto/imageAnnotation.js" afterPath="$PROJECT_DIR$/gauto/imageAnnotation.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gauto/script.js" afterPath="$PROJECT_DIR$/gauto/script.js" />
     </list>
     <ignored path="wixwiz.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,27 +39,27 @@
         <entry file="file://$PROJECT_DIR$/gauto/script.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="53" column="12" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="12" />
+              <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="imageAnnotation.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="imageAnnotation.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/gauto/imageAnnotation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.1308951">
+              <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="socialMeadiaSearch.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="socialMeadiaSearch.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gauto/socialMeadiaSearch.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7138614">
-              <caret line="293" column="26" selection-start-line="293" selection-start-column="26" selection-end-line="293" selection-end-column="26" />
+            <state vertical-scroll-proportion="-11.965517">
+              <caret line="271" column="0" selection-start-line="271" selection-start-column="0" selection-end-line="271" selection-end-column="0" />
               <folding>
                 <element signature="e#2083#2342#0" expanded="false" />
                 <element signature="e#2385#2430#0" expanded="false" />
@@ -98,7 +100,7 @@
         <entry file="file://$PROJECT_DIR$/gauto/googleMapScript.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="39" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
+              <caret line="105" column="16" selection-start-line="105" selection-start-column="16" selection-end-line="105" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -133,15 +135,15 @@
         <option value="$PROJECT_DIR$/glocation/script.js" />
         <option value="$PROJECT_DIR$/glocation/socialmediaParser.html" />
         <option value="$PROJECT_DIR$/gauto/googleMap.js" />
-        <option value="$PROJECT_DIR$/gauto/googleMapScript.js" />
         <option value="$PROJECT_DIR$/gauto/styles.css" />
         <option value="$PROJECT_DIR$/gauto/base64files/photo1.json" />
         <option value="$PROJECT_DIR$/gauto/visionApiTest.js" />
         <option value="$PROJECT_DIR$/gauto/socialmediaParser.html" />
-        <option value="$PROJECT_DIR$/gauto/script.js" />
-        <option value="$PROJECT_DIR$/gauto/imageAnnotation.js" />
         <option value="$PROJECT_DIR$/gauto/urlSearch.js" />
         <option value="$PROJECT_DIR$/gauto/socialMeadiaSearch.js" />
+        <option value="$PROJECT_DIR$/gauto/script.js" />
+        <option value="$PROJECT_DIR$/gauto/googleMapScript.js" />
+        <option value="$PROJECT_DIR$/gauto/imageAnnotation.js" />
       </list>
     </option>
   </component>
@@ -536,14 +538,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gauto/googleMapScript.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="39" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gauto/socialmediaParser.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.6153846">
@@ -556,22 +550,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.016361887">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gauto/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="12" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gauto/imageAnnotation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -601,8 +579,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/gauto/socialMeadiaSearch.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7138614">
-          <caret line="293" column="26" selection-start-line="293" selection-start-column="26" selection-end-line="293" selection-end-column="26" />
+        <state vertical-scroll-proportion="-11.965517">
+          <caret line="271" column="0" selection-start-line="271" selection-start-column="0" selection-end-line="271" selection-end-column="0" />
           <folding>
             <element signature="e#2083#2342#0" expanded="false" />
             <element signature="e#2385#2430#0" expanded="false" />
@@ -610,6 +588,30 @@
             <element signature="e#2654#2692#0" expanded="false" />
             <element signature="e#2800#2852#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gauto/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gauto/googleMapScript.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="105" column="16" selection-start-line="105" selection-start-column="16" selection-end-line="105" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gauto/imageAnnotation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1308951">
+          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>

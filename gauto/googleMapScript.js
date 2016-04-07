@@ -86,20 +86,22 @@ initAutoMap = function(data) {
     setupClickListener('changetype-geocode', ['geocode']);
 };
 
-
 initRadiusMap = function(data) {
+    var lat = typeof(data.searchParams.address.geometry.location.lat) === 'function' ? data.searchParams.address.geometry.location.lat() : data.searchParams.address.geometry.location.lat,
+        lng = typeof(data.searchParams.address.geometry.location.lng) === 'function' ? data.searchParams.address.geometry.location.lng() : data.searchParams.address.geometry.location.lng;
+
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 10,
         center: {
-            lat: typeof(data.searchParams.address.geometry.location.lat) === 'function' ? data.searchParams.address.geometry.location.lat() : data.searchParams.address.geometry.location.lat,
-            lng: typeof(data.searchParams.address.geometry.location.lng) === 'function' ? data.searchParams.address.geometry.location.lng() : data.searchParams.address.geometry.location.lng
+            lat: lat,
+            lng: lng
         },
         zoomControl: true
     });
     var marker = new google.maps.Marker({
         position: {
-            lat: typeof(data.searchParams.address.geometry.location.lat) === 'function' ? data.searchParams.address.geometry.location.lat() : data.searchParams.address.geometry.location.lat,
-            lng: typeof(data.searchParams.address.geometry.location.lng) === 'function' ? data.searchParams.address.geometry.location.lng() : data.searchParams.address.geometry.location.lng
+            lat: lat,
+            lng: lng
         },
         map: map
     });

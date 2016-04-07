@@ -2,22 +2,22 @@ var MAX_RESULTS = 10;
 
 getImageAnnotation = function(elementId, imageUrl) {
     var data = {
-        'features': [
+        features: [
         {
-            'type': 'LABEL_DETECTION',
-            'maxResults': 10
+            type: 'LABEL_DETECTION',
+            maxResults: MAX_RESULTS
         },
         {
-            'type': 'TEXT_DETECTION',
-            'maxResults': 10
+            type: 'TEXT_DETECTION',
+            maxResults: MAX_RESULTS
         },
         {
-            'type': 'FACE_DETECTION',
-            'maxResults': 1
+            type: 'FACE_DETECTION',
+            maxResults: 1
         },
         {
-            'type': 'LOGO_DETECTION',
-            'maxResults': 10
+            type: 'LOGO_DETECTION',
+            maxResults: MAX_RESULTS
         }
     ]};
 
@@ -49,7 +49,6 @@ parseAnnotations = function(elementId) {
                 content += ' *</samp></li>';
             });
         });
-        content += '';
 
         $('#' + elementId).html(content);
     }
