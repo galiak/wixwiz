@@ -24,6 +24,7 @@ parsePlatformData = function(response) {
     box.show();
 
     displayResultData(response);
+    getImagesDimensions();
     imagePreview();
 };
 
@@ -93,6 +94,14 @@ imagePreview = function(){
             $('#preview').remove();
         }
     );
+};
+
+getImagesDimensions = function() {
+    $('img').on('load', function() {
+        var dimensions = document.createElement('samp');
+        dimensions.appendChild(document.createTextNode(this.naturalWidth + ' x ' + this.naturalHeight + ' '));
+        $(this).before(dimensions);
+    });
 };
 
 displayResultData = function(data) {
@@ -308,7 +317,7 @@ parseImages = function(photos, type) {
     _.forEach(photos, function(photo, i) {
         content += '<li>';
         content += type;
-        content += ' [' + photo.source + ']: <img src="' + photo.value + '"/>';
+        content += ' [' + photo.source + ']: <img id="' + type+i +'" src="' + photo.value + '"/>';
         content += ' <ul id="' + type + i + '" class="annotations"></ul>';
         content += '</li>';
         getImageAnnotation(type + i, photo.value);

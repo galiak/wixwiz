@@ -57,6 +57,8 @@ parseAnnotations = function(elementId) {
         });
 
         $('#' + elementId).html(content);
+
+
     }
 };
 

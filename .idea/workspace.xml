@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2dd4727b-8d77-4dc6-be96-5e4f135cf20d" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gauto/imageAnnotation.js" afterPath="$PROJECT_DIR$/gauto/imageAnnotation.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gauto/script.js" afterPath="$PROJECT_DIR$/gauto/script.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gauto/socialmediaParser.html" afterPath="$PROJECT_DIR$/gauto/socialmediaParser.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gauto/urlSearch.js" afterPath="$PROJECT_DIR$/gauto/urlSearch.js" />
     </list>
     <ignored path="wixwiz.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,14 +45,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="imageAnnotation.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="imageAnnotation.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gauto/imageAnnotation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.40756914">
-              <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
               <folding>
-                <marker date="1460449973454" expanded="true" signature="2318:2340" placeholder="..." />
-                <marker date="1460449973454" expanded="true" signature="2318:2427" placeholder="..." />
+                <marker date="1460452631866" expanded="true" signature="2320:2342" placeholder="..." />
+                <marker date="1460452631866" expanded="true" signature="2320:2429" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -71,10 +71,9 @@
       <file leaf-file-name="socialMeadiaSearch.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gauto/socialMeadiaSearch.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.965517">
-              <caret line="271" column="0" selection-start-line="271" selection-start-column="0" selection-end-line="271" selection-end-column="0" />
+            <state vertical-scroll-proportion="-12.310345">
+              <caret line="69" column="7" selection-start-line="69" selection-start-column="7" selection-end-line="69" selection-end-column="7" />
               <folding>
-                <element signature="e#2083#2342#0" expanded="false" />
                 <element signature="e#2385#2430#0" expanded="false" />
                 <element signature="e#2470#2544#0" expanded="false" />
                 <element signature="e#2654#2692#0" expanded="false" />
@@ -84,22 +83,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urlSearch.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="urlSearch.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/gauto/urlSearch.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.103448">
-              <caret line="88" column="56" selection-start-line="88" selection-start-column="56" selection-end-line="88" selection-end-column="56" />
+            <state vertical-scroll-proportion="0.64285713">
+              <caret line="101" column="106" selection-start-line="101" selection-start-column="106" selection-end-line="101" selection-end-column="106" />
               <folding>
-                <element signature="e#1861#3495#0" expanded="false" />
-                <element signature="e#3957#4249#0" expanded="false" />
-                <element signature="e#4299#5072#0" expanded="false" />
-                <element signature="e#5108#5499#0" expanded="false" />
-                <element signature="e#5537#6304#0" expanded="false" />
-                <element signature="e#7625#8189#0" expanded="false" />
-                <element signature="e#8230#8610#0" expanded="false" />
-                <element signature="e#8652#8994#0" expanded="false" />
-                <element signature="e#9033#9376#0" expanded="false" />
-                <element signature="e#9416#9929#0" expanded="false" />
+                <element signature="e#1888#3522#0" expanded="false" />
+                <element signature="e#4272#4564#0" expanded="false" />
+                <element signature="e#4614#5387#0" expanded="false" />
+                <element signature="e#5423#5814#0" expanded="false" />
+                <element signature="e#5852#6619#0" expanded="false" />
+                <element signature="e#7940#8504#0" expanded="false" />
+                <element signature="e#8545#8925#0" expanded="false" />
+                <element signature="e#8967#9309#0" expanded="false" />
+                <element signature="e#9348#9691#0" expanded="false" />
+                <element signature="e#9731#10244#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -149,10 +148,10 @@
         <option value="$PROJECT_DIR$/gauto/socialMeadiaSearch.js" />
         <option value="$PROJECT_DIR$/gauto/googleMapScript.js" />
         <option value="$PROJECT_DIR$/gauto/styles.css" />
-        <option value="$PROJECT_DIR$/gauto/urlSearch.js" />
         <option value="$PROJECT_DIR$/gauto/script.js" />
-        <option value="$PROJECT_DIR$/gauto/imageAnnotation.js" />
         <option value="$PROJECT_DIR$/gauto/socialmediaParser.html" />
+        <option value="$PROJECT_DIR$/gauto/imageAnnotation.js" />
+        <option value="$PROJECT_DIR$/gauto/urlSearch.js" />
       </list>
     </option>
   </component>
@@ -313,6 +312,7 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.096875" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -322,7 +322,6 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -387,8 +386,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1460449973454" expanded="true" signature="2318:2340" placeholder="..." />
-            <marker date="1460449973454" expanded="true" signature="2318:2427" placeholder="..." />
+            <marker date="1460452631866" expanded="true" signature="2320:2342" placeholder="..." />
+            <marker date="1460452631866" expanded="true" signature="2320:2429" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -406,7 +405,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="195" column="28" selection-start-line="195" selection-start-column="28" selection-end-line="195" selection-end-column="28" />
           <folding>
-            <element signature="e#2083#2342#0" expanded="false" />
             <element signature="e#2385#2430#0" expanded="false" />
             <element signature="e#2470#2544#0" expanded="false" />
             <element signature="e#2654#2692#0" expanded="false" />
@@ -420,16 +418,16 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding>
-            <element signature="e#1861#3495#0" expanded="false" />
-            <element signature="e#3957#4249#0" expanded="false" />
-            <element signature="e#4299#5072#0" expanded="false" />
-            <element signature="e#5108#5499#0" expanded="false" />
-            <element signature="e#5537#6304#0" expanded="false" />
-            <element signature="e#7625#8189#0" expanded="false" />
-            <element signature="e#8230#8610#0" expanded="false" />
-            <element signature="e#8652#8994#0" expanded="false" />
-            <element signature="e#9033#9376#0" expanded="false" />
-            <element signature="e#9416#9929#0" expanded="false" />
+            <element signature="e#1888#3522#0" expanded="false" />
+            <element signature="e#4272#4564#0" expanded="false" />
+            <element signature="e#4614#5387#0" expanded="false" />
+            <element signature="e#5423#5814#0" expanded="false" />
+            <element signature="e#5852#6619#0" expanded="false" />
+            <element signature="e#7940#8504#0" expanded="false" />
+            <element signature="e#8545#8925#0" expanded="false" />
+            <element signature="e#8967#9309#0" expanded="false" />
+            <element signature="e#9348#9691#0" expanded="false" />
+            <element signature="e#9731#10244#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -530,20 +528,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gauto/socialMeadiaSearch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.965517">
-          <caret line="271" column="0" selection-start-line="271" selection-start-column="0" selection-end-line="271" selection-end-column="0" />
-          <folding>
-            <element signature="e#2083#2342#0" expanded="false" />
-            <element signature="e#2385#2430#0" expanded="false" />
-            <element signature="e#2470#2544#0" expanded="false" />
-            <element signature="e#2654#2692#0" expanded="false" />
-            <element signature="e#2800#2852#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gauto/googleMapScript.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -557,25 +541,6 @@
         <state vertical-scroll-proportion="-17.962265">
           <caret line="402" column="16" selection-start-line="402" selection-start-column="16" selection-end-line="402" selection-end-column="16" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gauto/urlSearch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.103448">
-          <caret line="88" column="56" selection-start-line="88" selection-start-column="56" selection-end-line="88" selection-end-column="56" />
-          <folding>
-            <element signature="e#1861#3495#0" expanded="false" />
-            <element signature="e#3957#4249#0" expanded="false" />
-            <element signature="e#4299#5072#0" expanded="false" />
-            <element signature="e#5108#5499#0" expanded="false" />
-            <element signature="e#5537#6304#0" expanded="false" />
-            <element signature="e#7625#8189#0" expanded="false" />
-            <element signature="e#8230#8610#0" expanded="false" />
-            <element signature="e#8652#8994#0" expanded="false" />
-            <element signature="e#9033#9376#0" expanded="false" />
-            <element signature="e#9416#9929#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -595,13 +560,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/gauto/socialMeadiaSearch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.310345">
+          <caret line="69" column="7" selection-start-line="69" selection-start-column="7" selection-end-line="69" selection-end-column="7" />
+          <folding>
+            <element signature="e#2385#2430#0" expanded="false" />
+            <element signature="e#2470#2544#0" expanded="false" />
+            <element signature="e#2654#2692#0" expanded="false" />
+            <element signature="e#2800#2852#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/gauto/imageAnnotation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40756914">
-          <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
           <folding>
-            <marker date="1460449973454" expanded="true" signature="2318:2340" placeholder="..." />
-            <marker date="1460449973454" expanded="true" signature="2318:2427" placeholder="..." />
+            <marker date="1460452631866" expanded="true" signature="2320:2342" placeholder="..." />
+            <marker date="1460452631866" expanded="true" signature="2320:2429" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gauto/urlSearch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.64285713">
+          <caret line="101" column="106" selection-start-line="101" selection-start-column="106" selection-end-line="101" selection-end-column="106" />
+          <folding>
+            <element signature="e#1888#3522#0" expanded="false" />
+            <element signature="e#4272#4564#0" expanded="false" />
+            <element signature="e#4614#5387#0" expanded="false" />
+            <element signature="e#5423#5814#0" expanded="false" />
+            <element signature="e#5852#6619#0" expanded="false" />
+            <element signature="e#7940#8504#0" expanded="false" />
+            <element signature="e#8545#8925#0" expanded="false" />
+            <element signature="e#8967#9309#0" expanded="false" />
+            <element signature="e#9348#9691#0" expanded="false" />
+            <element signature="e#9731#10244#0" expanded="false" />
           </folding>
         </state>
       </provider>
