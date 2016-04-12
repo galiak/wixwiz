@@ -55,10 +55,7 @@ parseAnnotations = function(elementId) {
                 content += ' *</samp></li>';
             });
         });
-
         $('#' + elementId).html(content);
-
-
     }
 };
 
@@ -67,8 +64,8 @@ parseImageProperties = function(colorProperties) {
 
     _.forEach(colorProperties, function(property) {
         content += '<li><samp> Red: ' + property.color.red + ', Green: ' + property.color.green + ', Blue: ' + property.color.blue;
-        content += '<span class="colorSwatch" style="background-color: rgb(' + property.color.red + ', ' + property.color.green + ', ' + property.color.blue + ');"></span>' + '</samp></li>';
-        content += '<li>Pixel fraction: ' + property.pixelFraction + ' (' + Math.round(property.score * 100) + '%)</li>';
+        content += '<span class="colorSwatch" style="background-color: rgb(' + property.color.red + ', ' + property.color.green + ', ' + property.color.blue + ');"></span>' + '</samp>';
+        content += '-- Pixel fraction: ' + property.pixelFraction + ' (' + Math.round(property.score * 100) + '%)</li>';
     });
     content += '</ul>';
 
