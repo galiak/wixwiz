@@ -397,3 +397,8 @@ td.urlCol a {
 #filter {
 	clear: left;
 }
+.colorSwatch {
+	width: 20px; height: 20px;
+	display:inline-block;
+	float: left;
+}

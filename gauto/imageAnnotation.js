@@ -18,6 +18,10 @@ getImageAnnotation = function(elementId, imageUrl) {
         {
             type: 'LOGO_DETECTION',
             maxResults: MAX_RESULTS
+        },
+        {
+            type: 'IMAGE_PROPERTIES',
+            maxResults: 10
         }
     ]};
 
@@ -38,7 +42,9 @@ parseAnnotations = function(elementId) {
         _.forEach(annotations.responses, function(response) {
             _.forEach(response, function(annotation, i) {
                 content += '<li><samp>* ' + i + ': ';
-                if (i === 'faceAnnotations') {
+                if (i === 'imagePropertiesAnnotation') {
+                    content += parseImageProperties(annotation.dominantColors.colors);
+                } else if (i === 'faceAnnotations') {
                     var label = _.first(annotation);
                     content += 'Detection Confidence: ' + Math.round(label.detectionConfidence * 100) + '% ; Blurred Likelihood: ' + label.blurredLikelihood + '; UnderExposed Likelihood: ' + label.underExposedLikelihood;
                 } else {
@@ -54,3 +60,15 @@ parseAnnotations = function(elementId) {
     }
 };
 
+parseImageProperties = function(colorProperties) {
+    var content = '<ul class="colors">';
+
+    _.forEach(colorProperties, function(property) {
+        content += '<li><samp> Red: ' + property.color.red + ', Green: ' + property.color.green + ', Blue: ' + property.color.blue;
+        content += '<span class="colorSwatch" style="background-color: rgb(' + property.color.red + ', ' + property.color.green + ', ' + property.color.blue + ');"></span>' + '</samp></li>';
+        content += '<li>Pixel fraction: ' + property.pixelFraction + ' (' + Math.round(property.score * 100) + '%)</li>';
+    });
+    content += '</ul>';
+
+    return content;
+};
