@@ -61,7 +61,7 @@ searchByUrls = function(urls) {
 	};
 	$.ajax({
 		type: 'POST',
-		url: 'http://wizard.jelly.wixpress.com/api/analyzeplatforms',
+		url: 'http://wizard.wix.com/api/analyzeplatforms',
 		data: JSON.stringify(data),
 		contentType: 'application/json; charset=utf-8',
 		dataType: 'json',

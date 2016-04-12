@@ -27,7 +27,7 @@ getImageAnnotation = function(elementId, imageUrl) {
 
     $.ajax({
         type: 'POST',
-        url: 'http://wizard.jelly.wixpress.com/api/getImageAnnotation?url=' + encodeURIComponent(imageUrl),
+        url: 'http://wizard.wix.com/api/getImageAnnotation?url=' + encodeURIComponent(imageUrl),
         data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
