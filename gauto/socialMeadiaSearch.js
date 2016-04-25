@@ -65,16 +65,6 @@ parseResults = function(results) {
         searchByUrls(($(this).siblings('.platformUrls').html()).split(','));
     });
 
-    $('.close').on('click', function() {
-        $('#platformResults').hide();
-    });
-
-    $(document).keydown(function(e) {
-        if (e.keyCode == 27) {
-            hideModals();
-        }
-    });
-
     $('.navigation li:first-child').addClass('selected');
 
     $('.navigation li').on('click', function() {

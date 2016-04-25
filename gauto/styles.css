@@ -402,3 +402,10 @@ td.urlCol a {
 	display:inline-block;
 	float: left;
 }
+.likes {
+	width: 50px;
+}
+#urlField {
+	display: none;
+	margin-left: 34px;
+}

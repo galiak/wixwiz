@@ -22,6 +22,10 @@ getImageAnnotation = function(elementId, imageUrl) {
         {
             type: 'IMAGE_PROPERTIES',
             maxResults: 10
+        },
+        {
+            type: 'LANDMARK_DETECTION',
+            maxResults: 10
         }
     ]};
 
@@ -44,9 +48,15 @@ parseAnnotations = function(elementId) {
                 content += '<li><samp>* ' + i + ': ';
                 if (i === 'imagePropertiesAnnotation') {
                     content += parseImageProperties(annotation.dominantColors.colors);
-                } else if (i === 'faceAnnotations') {
+                }
+                if (i === 'faceAnnotations') {
                     var label = _.first(annotation);
                     content += 'Detection Confidence: ' + Math.round(label.detectionConfidence * 100) + '% ; Blurred Likelihood: ' + label.blurredLikelihood + '; UnderExposed Likelihood: ' + label.underExposedLikelihood;
+                }
+                if(i === 'landmarkAnnotations') {
+                    _.forEach(annotation, function(n) {
+                        content += n.description + (n.score ? ' (' + Math.round(n.score * 100) + '%); ' : '; ') + ' Coordinates: ' + _.first(n.locations).latLng.latitude + ', ' + _.first(n.locations).latLng.longitude;
+                    });
                 } else {
                     _.forEach(annotation, function(n) {
                         content += n.description + (n.score ? ' (' + Math.round(n.score * 100) + '%); ' : '; ');

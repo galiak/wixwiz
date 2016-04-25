@@ -21,6 +21,7 @@ parsePlatformData = function(response) {
 
     $('.loading').hide();
     box.html(content);
+    $('#platformResults').show();
     box.show();
 
     displayResultData(response);

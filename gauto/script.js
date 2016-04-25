@@ -18,41 +18,49 @@ $(document).ready(function(){
 
 	initForm(data);
 	displayRequestData(data);
-	searchSocialMedia(data);
+	startSearch(data);
 });
 
-searchSocialMedia = function(data) {
+startSearch = function(data) {
 	$('#search').on('click', function() {
 		event.preventDefault();
-		$('.navigation').empty();
-		$('#content').empty();
-
-		getPlatforms(data);
-		shouldAddFilter(data);
-
-		if ($('input[name=search]:checked').val() === 'glocation') {
-			getBusinessName(data);
-			getRadius(data);
+		if ($('input[id=specifiedUrl]').is(':checked')) {
+			$('#results').hide();
+			searchByUrls([$('#urlField input').val()]);
+		} else {
+			searchSocialMedia(data);
 		}
-		displayRequestData(data);
-		$('.loading').show();
+	});
+};
 
-		$.ajax({
-			type: 'POST',
-			url: getServer(),
-			data: JSON.stringify(data),
-			contentType: 'application/json; charset=utf-8',
-			dataType: 'json',
-			success: function(response){
-				parseResults(response);
-				$('.loading').hide();
-			}
-		});
+searchSocialMedia = function(data) {
+	$('.navigation').empty();
+	$('#content').empty();
+
+	getPlatforms(data);
+	shouldAddFilter(data);
+
+	if ($('input[name=search]:checked').val() === 'glocation') {
+		getBusinessName(data);
+		getRadius(data);
+	}
+	displayRequestData(data);
+	$('.loading').show();
+
+	$.ajax({
+		type: 'POST',
+		url: getServer(),
+		data: JSON.stringify(data),
+		contentType: 'application/json; charset=utf-8',
+		dataType: 'json',
+		success: function(response){
+			parseResults(response);
+			$('.loading').hide();
+		}
 	});
 };
 
 searchByUrls = function(urls) {
-	event.preventDefault();
 	$('#platformResults').find('.box').empty();
 
 	var data = {
@@ -83,6 +91,10 @@ initForm = function(data) {
 			$('#floating-panel').hide();
 			$('#pac-input').show();
 			$('#type-selector').show();
+			$('#map').show();
+			$('#filter').show();
+			$('#mediaBox').show();
+			$('#urlField').hide();
 			initAutoMap(data);
 		}
 		if (value === 'glocation') {
@@ -90,7 +102,22 @@ initForm = function(data) {
 			$('#pac-input').hide();
 			$('#type-selector').hide();
 			$('#floating-panel').show();
+			$('#map').show();
+			$('#filter').show();
+			$('#mediaBox').show();
+			$('#urlField').hide();
 			initRadiusMap(data)
+		}
+
+		if (value === 'specifiedUrl') {
+			legend.html('Search by URL');
+			$('#pac-input').hide();
+			$('#type-selector').hide();
+			$('#floating-panel').hide();
+			$('#map').hide();
+			$('#filter').hide();
+			$('#mediaBox').hide();
+			$('#urlField').show();
 		}
 	});
 };
@@ -135,4 +162,14 @@ getRadius = function(data) {
 
 $('.request').on('click',function() {
 	$('#requestDisplay').toggle();
+});
+
+$('.close').on('click', function() {
+	$('#platformResults').hide();
+});
+
+$(document).keydown(function(e) {
+	if (e.keyCode == 27) {
+		hideModals();
+	}
 });

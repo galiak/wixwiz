@@ -12,6 +12,7 @@
 				<ul id="searchOptions">
 					<li><label><input type="radio" name="search" for="gauto" id="gauto" value="gauto" checked>Search by Business Name and Location (Google autocomplete)</input></label></li>
 					<li><label><input type="radio" name="search" for="glocation" id="glocation" value="glocation">Search by Business Name, Location and Radius</input></label></li>
+					<li><label><input type="radio" name="search" for="specifiedUrl" id="specifiedUrl" value="specifiedUrl">Search by specific URL</input></label></li>
 				</ul>
 				<fieldset id="searchFields">
 					<legend>Search by Business Name and Location</legend>
@@ -43,6 +44,9 @@
 								</div>
 								<!-------------------------->
 								<div id="map"></div>
+								<div id="urlField">
+									<input type="text" placeholder="Enter url to search"/>
+								</div>
 							</div>
 						</li>
 
